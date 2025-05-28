@@ -22,3 +22,13 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 
 - https://chatgpt.com/c/682d1420-7c24-8002-a6ba-06a43ceb686c
   - https://v0.dev/chat/developer-portfolio-website-6CAeEO2tqqO
+
+# TODOS
+
+- Nav menu for mobile
+- Button to navigate to the top
+- "Skills" section replacing "Get In Touch" section
+- Dynamic content based on JSON
+- EN/PT version
+  - dynamic json for each lang
+  - i18n for buttons and sections that are not dynamic (like "View code" button text)

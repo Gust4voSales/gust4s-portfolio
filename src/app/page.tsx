@@ -8,6 +8,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { ThemeSwitch } from "@/components/theme-switch";
 import Image from "next/image";
+import { MediaCarousel, MediaItem } from "@/components/media-carousel";
+
+interface Project {
+  title: string;
+  description: string;
+  media: MediaItem[];
+  tags: string[];
+}
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -229,7 +237,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   className={`relative mb-16 md:w-[calc(50%-40px)] ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}
                 >
-                  <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/5 transition-all duration-300">
+                  <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/15 dark:hover:shadow-primary/5 transition-all duration-300">
                     <div className="bg-primary absolute top-8 left-1/2 transform -translate-x-1/2 md:translate-x-0 md:left-auto md:right-0 md:translate-x-[calc(50%+20px)] flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border shadow-lg">
                       {item.type === "job" ? (
                         <Briefcase className="h-5 w-5 text-primary-foreground" />
@@ -279,48 +287,72 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "E-Commerce Platform",
-                  description:
-                    "A full-featured online store with cart functionality, payment processing, and inventory management.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["Next.js", "Stripe", "Tailwind CSS"],
-                },
-                {
-                  title: "Task Management App",
-                  description:
-                    "A collaborative task management tool with real-time updates, drag-and-drop interface, and team features.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["React", "Firebase", "TypeScript"],
-                },
-                {
-                  title: "Finance Dashboard",
-                  description:
-                    "An analytics dashboard for financial data visualization with interactive charts and reports.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["Vue.js", "D3.js", "Node.js"],
-                },
-                {
-                  title: "Social Media Platform",
-                  description: "A community platform with user profiles, content sharing, and real-time messaging.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["React", "GraphQL", "MongoDB"],
-                },
-                {
-                  title: "Fitness Tracker",
-                  description: "A mobile-first application for tracking workouts, nutrition, and fitness goals.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["React Native", "Redux", "Express"],
-                },
-                {
-                  title: "AI Content Generator",
-                  description:
-                    "A tool that uses AI to generate marketing content, blog posts, and social media updates.",
-                  image: "/placeholder.svg?height=300&width=500",
-                  tags: ["Python", "TensorFlow", "Next.js"],
-                },
-              ].map((project, index) => (
+              {(
+                [
+                  {
+                    title: "E-Commerce Platform",
+                    description:
+                      "A full-featured online store with cart functionality, payment processing, and inventory management.",
+                    media: [
+                      { type: "image", src: "/placeholder.svg", alt: "E-Commerce Dashboard" },
+                      { type: "video", src: "dQw4w9WgXcQ", title: "E-Commerce Demo" },
+                      { type: "image", src: "/placeholder.svg", alt: "Product Page" },
+                    ],
+                    tags: ["Next.js", "Stripe", "Tailwind CSS"],
+                  },
+                  {
+                    title: "Task Management App",
+                    description:
+                      "A collaborative task management tool with real-time updates, drag-and-drop interface, and team features.",
+                    media: [
+                      { type: "image", src: "/placeholder.svg", alt: "Task Dashboard" },
+                      { type: "video", src: "dQw4w9WgXcQ", title: "Task Management Demo" },
+                      { type: "image", src: "/placeholder.svg", alt: "Team Collaboration" },
+                    ],
+                    tags: ["React", "Firebase", "TypeScript"],
+                  },
+                  {
+                    title: "Finance Dashboard",
+                    description:
+                      "An analytics dashboard for financial data visualization with interactive charts and reports.",
+                    media: [
+                      { type: "image", src: "/placeholder.svg", alt: "Finance Charts" },
+                      { type: "video", src: "dQw4w9WgXcQ", title: "Dashboard Overview" },
+                    ],
+                    tags: ["Vue.js", "D3.js", "Node.js"],
+                  },
+                  {
+                    title: "Social Media Platform",
+                    description: "A community platform with user profiles, content sharing, and real-time messaging.",
+                    media: [
+                      { type: "image", src: "/placeholder.svg", alt: "Social Feed" },
+                      { type: "image", src: "/placeholder.svg", alt: "User Profile" },
+                      { type: "video", src: "dQw4w9WgXcQ", title: "Platform Demo" },
+                    ],
+                    tags: ["React", "GraphQL", "MongoDB"],
+                  },
+                  {
+                    title: "Fitness Tracker",
+                    description: "A mobile-first application for tracking workouts, nutrition, and fitness goals.",
+                    media: [
+                      { type: "video", src: "dQw4w9WgXcQ", title: "Fitness App Demo" },
+                      { type: "image", src: "/placeholder.svg", alt: "Workout Tracking" },
+                    ],
+                    tags: ["React Native", "Redux", "Express"],
+                  },
+                  {
+                    title: "AI Content Generator",
+                    description:
+                      "A tool that uses AI to generate marketing content, blog posts, and social media updates.",
+                    media: [
+                      { type: "image", src: "/placeholder.svg", alt: "AI Interface" },
+                      { type: "video", src: "dQw4w9WgXcQ", title: "AI Generator Demo" },
+                      { type: "image", src: "/placeholder.svg", alt: "Generated Content" },
+                    ],
+                    tags: ["Python", "TensorFlow", "Next.js"],
+                  },
+                ] as Project[]
+              ).map((project, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -328,23 +360,14 @@ export default function Portfolio() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Card className="bg-card backdrop-blur-sm border-border overflow-hidden h-full hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
-                    <div className="relative overflow-hidden">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        width={500}
-                        height={300}
-                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                    </div>
+                  <Card className="bg-secondary/15 backdrop-blur-sm border-border pt-0 overflow-hidden h-full hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group">
+                    <MediaCarousel media={project.media} projectTitle={project.title} />
 
                     <CardHeader>
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <CardTitle className="text-xl leading-4">{project.title}</CardTitle>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {project.tags.map((tag, tagIndex) => (
-                          <Badge key={tagIndex} variant="secondary" className="bg-surface text-muted">
+                          <Badge key={tagIndex} variant="secondary" className="bg-muted text-muted-foreground">
                             {tag}
                           </Badge>
                         ))}
@@ -352,7 +375,7 @@ export default function Portfolio() {
                     </CardHeader>
 
                     <CardContent>
-                      <CardDescription className="text-muted-foreground">{project.description}</CardDescription>
+                      <CardDescription className="text-foreground">{project.description}</CardDescription>
                     </CardContent>
 
                     <CardFooter className="flex justify-between">
