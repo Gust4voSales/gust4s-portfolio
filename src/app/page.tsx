@@ -237,8 +237,21 @@ export default function Portfolio() {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   className={`relative mb-16 md:w-[calc(50%-40px)] ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}
                 >
-                  <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/15 dark:hover:shadow-primary/5 transition-all duration-300">
-                    <div className="bg-primary absolute top-8 left-1/2 transform -translate-x-1/2 md:translate-x-0 md:left-auto md:right-0 md:translate-x-[calc(50%+20px)] flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border shadow-lg">
+                  <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/15 dark:hover:shadow-primary/5 transition-all duration-300 relative">
+                    {/* Triangle pointer for desktop */}
+                    <div
+                      className={`hidden md:block absolute top-11 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ${
+                        index % 2 === 0
+                          ? "right-[-12px] border-l-[12px] border-l-secondary/15"
+                          : "left-[-12px] border-r-[12px] border-r-secondary/15"
+                      }`}
+                    ></div>
+
+                    <div
+                      className={`bg-primary absolute top-[-2rem] md:top-8 left-1/2 transform -translate-x-1/2 ${
+                        index % 2 === 0 ? "md:left-[calc(100%+40px)]" : "md:left-[-40px]"
+                      } flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border shadow-lg`}
+                    >
                       {item.type === "job" ? (
                         <Briefcase className="h-5 w-5 text-primary-foreground" />
                       ) : (

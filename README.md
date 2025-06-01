@@ -25,9 +25,14 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 
 # TODOS
 
-- Nav menu for mobile
+- Mobile adjusts
+  - Nav menu for mobile
+  - Timeline
+  - Projects Cards
+  - General
 - Button to navigate to the top
 - "Skills" section replacing "Get In Touch" section
+- logic or component to render larger texts
 - Dynamic content based on JSON
 - EN/PT version
   - dynamic json for each lang

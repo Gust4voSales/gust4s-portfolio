@@ -141,7 +141,7 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                     />
                   </div>
                 ) : (
-                  <div className="relative w-3/4 mx-auto h-full flex items-center justify-center bg-black p-4">
+                  <div className="relative w-3/4 mx-auto h-full flex items-center justify-center p-4">
                     {!isVideoPlaying ? (
                       <div
                         className="relative w-full h-full flex items-center justify-center cursor-pointer"
