@@ -29,10 +29,11 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
   - Timeline
   - Projects Cards
   - General (spacing, sizes)
-- Button to navigate to the top
-- "Skills" section replacing "Get In Touch" section
 - logic or component to render larger texts
 - Dynamic content based on JSON
 - EN/PT version
+
   - dynamic json for each lang
   - i18n for buttons and sections that are not dynamic (like "View code" button text)
+
+- Optionally, filter projects by tags

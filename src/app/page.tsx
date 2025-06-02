@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
-  ExternalLink,
   Github,
   Mail,
   FileText,
@@ -13,6 +12,9 @@ import {
   GraduationCap,
   Home,
   FolderOpen,
+  ExternalLink,
+  Linkedin,
+  ArrowUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,6 +23,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { MobileNav } from "@/components/mobile-nav";
 import Image from "next/image";
 import { MediaCarousel, MediaItem } from "@/components/media-carousel";
+import { ExternalLinkAnchor } from "@/components/ui/external-link-anchor";
 
 interface Project {
   title: string;
@@ -37,18 +40,25 @@ interface NavigationItem {
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const navigationItems: NavigationItem[] = [
     { id: "home", label: "Home", icon: Home },
     { id: "experience", label: "Experience", icon: Briefcase },
     { id: "projects", label: "Projects", icon: FolderOpen },
-    { id: "contact", label: "Contact", icon: Mail },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
       const scrollPosition = window.scrollY + 100;
+
+      // Check if user has scrolled past the first section
+      const homeSection = document.getElementById("home");
+      if (homeSection) {
+        const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
+        setShowBackToTop(window.scrollY > homeSectionBottom - 200);
+      }
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -72,6 +82,13 @@ export default function Portfolio() {
         behavior: "smooth",
       });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -118,27 +135,27 @@ export default function Portfolio() {
 
       <main className="pt-16">
         {/* Welcome Section */}
-        <section id="home" className="min-h-screen flex items-center relative overflow-hidden">
+        <section id="home" className="min-h-screen flex mt-10 lg:items-center lg:mt-0 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute top-20 right-[10%] w-72 h-72 bg-primary/20 rounded-full filter blur-3xl"></div>
             <div className="absolute bottom-20 left-[15%] w-96 h-96 bg-secondary/20 rounded-full filter blur-3xl"></div>
           </div>
 
-          <div className="container mx-auto px-4 py-20 z-10 relative">
+          <div className="container mx-auto px-4 py-0 lg:py-20 z-10 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="space-y-6"
+                className="space-y-6 flex flex-col items-center lg:items-start"
               >
-                <Badge variant="outline" className="px-4 py-1 text-sm border-primary/50 bg-primary/5">
+                <Badge variant="outline" className="px-4 py-1 text-sm border-primary/50 bg-primary/5 ">
                   Full-Stack Developer
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                   Hi, I&apos;m <span className="text-primary">Alex Johnson</span>
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-lg">
+                <p className="text-md md:text-xl text-justify text-muted-foreground max-w-lg">
                   I build exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
                   Focused on turning ideas into elegant solutions.
                 </p>
@@ -160,13 +177,13 @@ export default function Portfolio() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <div className="relative w-full aspect-square max-w-[400px] max-h-[400px] mx-auto flex justify-center items-center">
+                <div className="relative aspect-square w-3/5 h-3/5 md:w-2/5 md:h-2/5 lg:w-full lg:h-full max-w-[400px] max-h-[400px] mx-auto flex justify-center items-center">
                   <Image
                     src="/me.jpg"
                     alt="Gustavo Sales"
                     width={400}
                     height={400}
-                    className="rounded-full object-cover max-w-[400px] max-h-[400px] border-4 border-foreground dark:border-border"
+                    className="rounded-full object-cover w-full h-full max-w-[400px] max-h-[400px] border-4 border-foreground dark:border-border"
                     priority
                   />
                 </div>
@@ -176,7 +193,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
+                className="absolute bottom-40 lg:bottom-0 left-1/2 transform -translate-x-1/2 cursor-pointer"
                 onClick={() => scrollToSection("experience")}
               >
                 <ArrowDown className="h-10 w-10 text-muted-foreground animate-bounce" />
@@ -317,11 +334,7 @@ export default function Portfolio() {
                     title: "E-Commerce Platform",
                     description:
                       "A full-featured online store with cart functionality, payment processing, and inventory management.",
-                    media: [
-                      { type: "image", src: "/placeholder.svg", alt: "E-Commerce Dashboard" },
-                      { type: "video", src: "dQw4w9WgXcQ", title: "E-Commerce Demo" },
-                      { type: "image", src: "/placeholder.svg", alt: "Product Page" },
-                    ],
+                    media: [{ type: "image", src: "/placeholder.svg", alt: "E-Commerce Dashboard" }],
                     tags: ["Next.js", "Stripe", "Tailwind CSS"],
                   },
                   {
@@ -418,150 +431,6 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-20 relative">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-1/4 right-[10%] w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
-            <div className="absolute bottom-1/3 left-[15%] w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
-          </div>
-
-          <div className="container mx-auto px-4 z-10 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16 max-w-3xl mx-auto"
-            >
-              <Badge variant="outline" className="mb-4 px-4 py-1 text-sm border-primary/50 bg-primary/5">
-                Get In Touch
-              </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Let&apos;s Work Together</h2>
-              <p className="text-muted-foreground text-lg">
-                Have a project in mind or just want to chat? Feel free to reach out. I&apos;m always open to new
-                opportunities and collaborations.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <h3 className="text-2xl font-bold">Contact Information</h3>
-                <p className="text-muted-foreground">
-                  Feel free to reach out through any of these channels. I&apos;m typically able to respond within 24
-                  hours.
-                </p>
-
-                <div className="space-y-4 pt-4">
-                  <div className="flex items-center">
-                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                      <Mail className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">alex.johnson@example.com</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                      <Github className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">GitHub</p>
-                      <p className="font-medium">github.com/alexjohnson</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                      <svg
-                        className="h-5 w-5 text-primary"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">LinkedIn</p>
-                      <p className="font-medium">linkedin.com/in/alexjohnson</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <form className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium">
-                          Name
-                        </label>
-                        <input
-                          id="name"
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-surface/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                          Email
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-surface/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                          placeholder="Your email"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium">
-                        Subject
-                      </label>
-                      <input
-                        id="subject"
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-surface/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        placeholder="Subject"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-surface/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        placeholder="Your message"
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <Button className="w-full" size="lg">
-                    Send Message
-                  </Button>
-                </form>
-              </motion.div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="bg-background border-t border-border py-12">
@@ -571,44 +440,54 @@ export default function Portfolio() {
               <div className="text-xl font-bold">
                 <span className="text-primary">Alex</span>Johnson
               </div>
-              <p className="text-muted-foreground mt-2">Full-Stack Developer</p>
+              <ExternalLinkAnchor
+                href="mailto:manoel0gustavo@gmail.com"
+                className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+              >
+                manoel0gustavo@gmail.com
+              </ExternalLinkAnchor>
             </div>
 
             <div className="flex space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <ExternalLinkAnchor
+                href="https://github.com/manoel0gustavo"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 <span className="sr-only">GitHub</span>
                 <Github className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              </ExternalLinkAnchor>
+              <ExternalLinkAnchor
+                href="https://www.linkedin.com/in/manoel0gustavo/"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 <span className="sr-only">LinkedIn</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <span className="sr-only">Twitter</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                </svg>
-              </a>
+                <Linkedin className="h-6 w-6" />
+              </ExternalLinkAnchor>
             </div>
           </div>
 
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-sm mx-auto">
               © {new Date().getFullYear()} Alex Johnson. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-muted-foreground hover:text-gray-400 text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-gray-400 text-sm">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </footer>
+
+      {/* Back to Top Button */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{
+          opacity: showBackToTop ? 1 : 0,
+          scale: showBackToTop ? 1 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+        onClick={scrollToTop}
+        className="fixed cursor-pointer bottom-8 right-8 z-50 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        aria-label="Back to top"
+      >
+        <ArrowUp className="h-5 w-5" />
+      </motion.button>
     </div>
   );
 }
