@@ -2,11 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, ExternalLink, Github, Mail, FileText, Calendar, Briefcase, GraduationCap } from "lucide-react";
+import {
+  ArrowDown,
+  ExternalLink,
+  Github,
+  Mail,
+  FileText,
+  Calendar,
+  Briefcase,
+  GraduationCap,
+  Home,
+  FolderOpen,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ThemeSwitch } from "@/components/theme-switch";
+import { MobileNav } from "@/components/mobile-nav";
 import Image from "next/image";
 import { MediaCarousel, MediaItem } from "@/components/media-carousel";
 
@@ -17,8 +29,21 @@ interface Project {
   tags: string[];
 }
 
+interface NavigationItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
+
+  const navigationItems: NavigationItem[] = [
+    { id: "home", label: "Home", icon: Home },
+    { id: "experience", label: "Experience", icon: Briefcase },
+    { id: "projects", label: "Projects", icon: FolderOpen },
+    { id: "contact", label: "Contact", icon: Mail },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,15 +88,15 @@ export default function Portfolio() {
               <span className="text-primary">Dev</span>Portfolio
             </motion.div>
             <ul className="hidden md:flex space-x-8">
-              {["home", "experience", "projects", "contact"].map((section) => (
-                <li key={section}>
+              {navigationItems.map((item) => (
+                <li key={item.id}>
                   <button
-                    onClick={() => scrollToSection(section)}
-                    className={`text-sm font-medium capitalize transition-colors hover:text-primary ${
-                      activeSection === section ? "text-primary" : "text-muted-foreground"
+                    onClick={() => scrollToSection(item.id)}
+                    className={`cursor-pointer text-sm font-medium capitalize transition-colors hover:text-primary ${
+                      activeSection === item.id ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
-                    {section}
+                    {item.label}
                   </button>
                 </li>
               ))}
@@ -81,25 +106,11 @@ export default function Portfolio() {
                 Resume <FileText className="ml-2 h-4 w-4" />
               </Button>
               <ThemeSwitch />
-              <Button variant="outline" size="icon" className="md:hidden ml-4">
-                <span className="sr-only">Menu</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                >
-                  <line x1="4" x2="20" y1="12" y2="12" />
-                  <line x1="4" x2="20" y1="6" y2="6" />
-                  <line x1="4" x2="20" y1="18" y2="18" />
-                </svg>
-              </Button>
+              <MobileNav
+                activeSection={activeSection}
+                scrollToSection={scrollToSection}
+                navigationItems={navigationItems}
+              />
             </div>
           </nav>
         </div>
@@ -125,7 +136,7 @@ export default function Portfolio() {
                   Full-Stack Developer
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                  Hi, I'm <span className="text-primary">Alex Johnson</span>
+                  Hi, I&apos;m <span className="text-primary">Alex Johnson</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-lg">
                   I build exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
@@ -194,7 +205,7 @@ export default function Portfolio() {
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Professional Experience</h2>
               <p className="text-muted-foreground text-lg">
-                A timeline of my professional journey and the skills I've developed along the way.
+                A timeline of my professional journey and the skills I&apos;ve developed along the way.
               </p>
             </motion.div>
 
@@ -426,9 +437,9 @@ export default function Portfolio() {
               <Badge variant="outline" className="mb-4 px-4 py-1 text-sm border-primary/50 bg-primary/5">
                 Get In Touch
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Let&apos;s Work Together</h2>
               <p className="text-muted-foreground text-lg">
-                Have a project in mind or just want to chat? Feel free to reach out. I'm always open to new
+                Have a project in mind or just want to chat? Feel free to reach out. I&apos;m always open to new
                 opportunities and collaborations.
               </p>
             </motion.div>
@@ -443,7 +454,8 @@ export default function Portfolio() {
               >
                 <h3 className="text-2xl font-bold">Contact Information</h3>
                 <p className="text-muted-foreground">
-                  Feel free to reach out through any of these channels. I'm typically able to respond within 24 hours.
+                  Feel free to reach out through any of these channels. I&apos;m typically able to respond within 24
+                  hours.
                 </p>
 
                 <div className="space-y-4 pt-4">

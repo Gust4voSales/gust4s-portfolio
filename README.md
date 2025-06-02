@@ -26,10 +26,9 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 # TODOS
 
 - Mobile adjusts
-  - Nav menu for mobile
   - Timeline
   - Projects Cards
-  - General
+  - General (spacing, sizes)
 - Button to navigate to the top
 - "Skills" section replacing "Get In Touch" section
 - logic or component to render larger texts
