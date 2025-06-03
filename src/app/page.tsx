@@ -130,7 +130,7 @@ export default function Portfolio() {
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className={`cursor-pointer text-sm font-medium capitalize transition-colors hover:text-primary ${
+                    className={`cursor-pointer text-sm font-medium capitalize transition-colors hover:text-primary active:text-primary ${
                       activeSection === item.id ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
@@ -388,7 +388,7 @@ export default function Portfolio() {
               </div>
               <ExternalLinkAnchor
                 href={`mailto:${portfolioData.personal.links.email}`}
-                className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+                className={`text-muted-foreground hover:text-primary hover:underline active:text-primary active:underline transition-colors`}
               >
                 {portfolioData.personal.links.email}
               </ExternalLinkAnchor>
@@ -397,14 +397,14 @@ export default function Portfolio() {
             <div className="flex space-x-6">
               <ExternalLinkAnchor
                 href={portfolioData.personal.links.github}
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
               >
                 <span className="sr-only">GitHub</span>
                 <Github className="h-6 w-6" />
               </ExternalLinkAnchor>
               <ExternalLinkAnchor
                 href={portfolioData.personal.links.linkedin}
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
               >
                 <span className="sr-only">LinkedIn</span>
                 <Linkedin className="h-6 w-6" />
@@ -429,7 +429,7 @@ export default function Portfolio() {
         }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="fixed cursor-pointer bottom-8 right-8 z-50 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className={`fixed cursor-pointer bottom-8 right-8 z-50 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:shadow-xl active:shadow-xl transition-all duration-300 hover:scale-110 active:scale-110`}
         aria-label="Back to top"
       >
         <ArrowUp className="h-5 w-5" />

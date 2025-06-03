@@ -20,7 +20,7 @@ export function ExpandableText({ text, maxLength = 150, className = "" }: Expand
       <p className="leading-relaxed">{isExpanded ? text : `${text.slice(0, maxLength)}...`}</p>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="mt-2 cursor-pointer text-primary hover:text-primary/80 text-sm font-medium flex items-center gap-1 transition-colors"
+        className="mt-2 cursor-pointer text-primary hover:text-primary/80 active:text-primary/80 text-sm font-medium flex items-center gap-1 transition-colors"
       >
         {isExpanded ? (
           <>

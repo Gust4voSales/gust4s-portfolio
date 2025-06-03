@@ -232,13 +232,13 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                   <>
                     <button
                       onClick={prevSlide}
-                      className="cursor-pointer flex items-center justify-center absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="cursor-pointer flex items-center justify-center absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/70 text-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <ChevronLeft className="size-8" />
                     </button>
                     <button
                       onClick={nextSlide}
-                      className="cursor-pointer flex items-center justify-center absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="cursor-pointer flex items-center justify-center absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/70 text-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <ChevronRight className="size-8" />
                     </button>
@@ -255,7 +255,9 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                         key={index}
                         onClick={() => onNavigate(index)}
                         className={`w-2 h-2 rounded-full transition-colors ${
-                          index === currentIndex ? "bg-primary" : "bg-foreground/50 hover:bg-foreground/70"
+                          index === currentIndex
+                            ? "bg-primary"
+                            : "bg-foreground/50 hover:bg-foreground/70 active:bg-foreground/70"
                         }`}
                       />
                     ))}
@@ -358,7 +360,7 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
                 e.stopPropagation();
                 prevSlide();
               }}
-              className="cursor-pointer absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="cursor-pointer flex items-center justify-center absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -367,7 +369,7 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
                 e.stopPropagation();
                 nextSlide();
               }}
-              className="cursor-pointer absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="cursor-pointer flex items-center justify-center absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -385,7 +387,9 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
                   goToSlide(index);
                 }}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentSlide ? "bg-primary" : "bg-foreground/50 hover:bg-foreground/70"
+                  index === currentSlide
+                    ? "bg-primary"
+                    : "bg-foreground/50 hover:bg-foreground/70 active:bg-foreground/70"
                 }`}
               />
             ))}

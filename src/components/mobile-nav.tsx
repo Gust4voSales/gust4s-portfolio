@@ -54,7 +54,7 @@ export function MobileNav({ activeSection, scrollToSection, navigationItems }: M
                     className={`cursor-pointer flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                       isActive
                         ? "bg-primary/10 text-primary border border-primary/20"
-                        : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-primary/10 active:text-foreground active:bg-primary/10"
                     }`}
                   >
                     <Icon className="h-5 w-5" />

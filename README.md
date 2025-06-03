@@ -26,10 +26,7 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 # TODOS
 
 - Mobile adjusts
-  - Timeline
-  - Projects Cards (swiping modal)
-  - General (spacing, sizes, active buttons colors)
-- logic or component to render larger texts
+  - General (spacing, sizes)
 - EN/PT version
 
   - dynamic json for each lang
