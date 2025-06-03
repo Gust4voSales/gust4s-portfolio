@@ -27,9 +27,46 @@ interface MediaModalProps {
   projectTitle: string;
 }
 
+function useSwipe(onSwipeLeft: () => void, onSwipeRight: () => void) {
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  const minSwipeDistance = 50; // px
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        onSwipeLeft();
+      } else {
+        onSwipeRight();
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+  return { onTouchStart, onTouchMove, onTouchEnd };
+}
+
 function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectTitle }: MediaModalProps) {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const swipeHandlers = useSwipe(
+    () => onNavigate((currentIndex + 1) % media.length),
+    () => onNavigate((currentIndex - 1 + media.length) % media.length)
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -104,6 +141,9 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-background/95 backdrop-blur-md p-4"
             onClick={onClose}
             style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+            onTouchStart={swipeHandlers.onTouchStart}
+            onTouchMove={swipeHandlers.onTouchMove}
+            onTouchEnd={swipeHandlers.onTouchEnd}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -179,7 +219,7 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                       <iframe
                         src={`https://www.youtube.com/embed/${currentMedia.src}?autoplay=1&rel=0`}
                         title={currentMedia.title || `${projectTitle} video`}
-                        className="w-full h-full"
+                        className="w-full h-full max-h-5/6"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
@@ -267,9 +307,17 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
 
   const currentMedia = media[currentSlide];
 
+  const swipeHandlers = useSwipe(nextSlide, prevSlide);
+
   return (
     <div className="relative overflow-hidden group">
-      <div className="relative w-full h-48 cursor-pointer" onClick={() => openModal()}>
+      <div
+        className="relative w-full h-48 cursor-pointer"
+        onClick={() => openModal()}
+        onTouchStart={swipeHandlers.onTouchStart}
+        onTouchMove={swipeHandlers.onTouchMove}
+        onTouchEnd={swipeHandlers.onTouchEnd}
+      >
         {currentMedia.type === "image" ? (
           <Image
             src={currentMedia.src || "/placeholder.svg"}
