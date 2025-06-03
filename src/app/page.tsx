@@ -22,14 +22,33 @@ import { Badge } from "@/components/ui/badge";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { MobileNav } from "@/components/mobile-nav";
 import Image from "next/image";
-import { MediaCarousel, MediaItem } from "@/components/media-carousel";
+import { MediaCarousel } from "@/components/media-carousel";
 import { ExternalLinkAnchor } from "@/components/ui/external-link-anchor";
+import portfolioData from "@/data/portfolio.json";
+import { ExpandableText } from "@/components/expandable-text";
 
 interface Project {
   title: string;
   description: string;
-  media: MediaItem[];
+  media: {
+    type: "image" | "video";
+    src: string;
+    alt?: string;
+    title?: string;
+  }[];
   tags: string[];
+  links: {
+    live: string;
+    github: string;
+  };
+}
+
+interface TimelineItem {
+  date: string;
+  institution: string;
+  type: "job" | "study";
+  title: string;
+  description: string;
 }
 
 interface NavigationItem {
@@ -102,7 +121,9 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               className="text-xl font-bold"
             >
-              <span className="text-primary">Dev</span>Portfolio
+              <span className="text-muted-foreground">Gust</span>
+              <span className="text-primary">4</span>
+              <span className="text-muted-foreground">s</span>
             </motion.div>
             <ul className="hidden md:flex space-x-8">
               {navigationItems.map((item) => (
@@ -119,8 +140,10 @@ export default function Portfolio() {
               ))}
             </ul>
             <div className="flex items-center">
-              <Button variant="outline" size="sm" className="hidden md:flex">
-                Resume <FileText className="ml-2 h-4 w-4" />
+              <Button variant="outline" size="sm" className="hidden md:flex" asChild>
+                <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
+                  Resume <FileText className="ml-2 h-4 w-4" />
+                </ExternalLinkAnchor>
               </Button>
               <ThemeSwitch />
               <MobileNav
@@ -150,23 +173,26 @@ export default function Portfolio() {
                 className="space-y-6 flex flex-col items-center lg:items-start"
               >
                 <Badge variant="outline" className="px-4 py-1 text-sm border-primary/50 bg-primary/5 ">
-                  Full-Stack Developer
+                  {portfolioData.personal.title}
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                  Hi, I&apos;m <span className="text-primary">Alex Johnson</span>
+                  Hi, I&apos;m <span className="text-primary">{portfolioData.personal.name}</span>
                 </h1>
                 <p className="text-md md:text-xl text-justify text-muted-foreground max-w-lg">
-                  I build exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
-                  Focused on turning ideas into elegant solutions.
+                  {portfolioData.sections.home.description}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button onClick={() => scrollToSection("contact")} size="lg">
-                    Contact Me
-                    <Mail className="ml-2 h-4 w-4" />
+                  <Button asChild size="lg">
+                    <ExternalLinkAnchor href={`mailto:${portfolioData.personal.links.email}`}>
+                      Contact Me
+                      <Mail className="ml-2 h-4 w-4" />
+                    </ExternalLinkAnchor>
                   </Button>
-                  <Button variant="outline" size="lg">
-                    View Resume
-                    <FileText className="ml-2 h-4 w-4" />
+                  <Button variant="outline" size="lg" asChild>
+                    <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
+                      View Resume
+                      <FileText className="ml-2 h-4 w-4" />
+                    </ExternalLinkAnchor>
                   </Button>
                 </div>
               </motion.div>
@@ -179,8 +205,8 @@ export default function Portfolio() {
               >
                 <div className="relative aspect-square w-3/5 h-3/5 md:w-2/5 md:h-2/5 lg:w-full lg:h-full max-w-[400px] max-h-[400px] mx-auto flex justify-center items-center">
                   <Image
-                    src="/me.jpg"
-                    alt="Gustavo Sales"
+                    src={portfolioData.personal.profileImage}
+                    alt={portfolioData.personal.name}
                     width={400}
                     height={400}
                     className="rounded-full object-cover w-full h-full max-w-[400px] max-h-[400px] border-4 border-foreground dark:border-border"
@@ -221,9 +247,7 @@ export default function Portfolio() {
                 My Journey
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Professional Experience</h2>
-              <p className="text-muted-foreground text-lg">
-                A timeline of my professional journey and the skills I&apos;ve developed along the way.
-              </p>
+              <p className="text-muted-foreground text-lg">{portfolioData.sections.experience.description}</p>
             </motion.div>
 
             <div className="relative max-w-4xl mx-auto">
@@ -231,73 +255,51 @@ export default function Portfolio() {
               <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent"></div>
 
               {/* Experience Items */}
-              {[
-                {
-                  date: "2022 - Present",
-                  institution: "TechNova Solutions",
-                  type: "job",
-                  title: "Senior Full-Stack Developer",
-                  description:
-                    "Led the development of a SaaS platform serving over 50,000 users. Implemented CI/CD pipelines and microservices architecture that improved deployment efficiency by 40%.",
-                },
-                {
-                  date: "2020 - 2022",
-                  institution: "Digital Frontier",
-                  type: "job",
-                  title: "Frontend Developer",
-                  description:
-                    "Developed responsive web applications using React and Next.js. Collaborated with designers to implement pixel-perfect UIs and improved site performance by 35%.",
-                },
-                {
-                  date: "2018 - 2020",
-                  institution: "UFAPE",
-                  type: "study",
-                  title: "Bachelor of Computer Science",
-                  description:
-                    "Bla bla ... Worked with JavaScript, HTML, and CSS to create interactive user experiences. Participated in agile development processes.",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`relative mb-16 md:w-[calc(50%-40px)] ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}
-                >
-                  <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/15 dark:hover:shadow-primary/5 transition-all duration-300 relative">
-                    {/* Triangle pointer for desktop */}
-                    <div
-                      className={`hidden md:block absolute top-11 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ${
-                        index % 2 === 0
-                          ? "right-[-12px] border-l-[12px] border-l-secondary/15"
-                          : "left-[-12px] border-r-[12px] border-r-secondary/15"
-                      }`}
-                    ></div>
+              {portfolioData.sections.experience.timeline.map((item, index) => {
+                const timelineItem = item as TimelineItem;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className={`relative mb-16 md:w-[calc(50%-40px)] ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}
+                  >
+                    <div className="bg-secondary/15 text-secondary-foreground backdrop-blur-sm border border-border rounded-xl p-6 shadow-xl hover:shadow-primary/15 dark:hover:shadow-primary/5 transition-all duration-300 relative">
+                      {/* Triangle pointer for desktop */}
+                      <div
+                        className={`hidden md:block absolute top-11 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ${
+                          index % 2 === 0
+                            ? "right-[-12px] border-l-[12px] border-l-secondary/15"
+                            : "left-[-12px] border-r-[12px] border-r-secondary/15"
+                        }`}
+                      ></div>
 
-                    <div
-                      className={`bg-primary absolute top-[-2rem] md:top-8 left-1/2 transform -translate-x-1/2 ${
-                        index % 2 === 0 ? "md:left-[calc(100%+40px)]" : "md:left-[-40px]"
-                      } flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border shadow-lg`}
-                    >
-                      {item.type === "job" ? (
-                        <Briefcase className="h-5 w-5 text-primary-foreground" />
-                      ) : (
-                        <GraduationCap className="h-5 w-5 text-primary-foreground" />
-                      )}
+                      <div
+                        className={`bg-primary absolute top-[-2rem] md:top-8 left-1/2 transform -translate-x-1/2 ${
+                          index % 2 === 0 ? "md:left-[calc(100%+40px)]" : "md:left-[-40px]"
+                        } flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border shadow-lg`}
+                      >
+                        {timelineItem.type === "job" ? (
+                          <Briefcase className="h-5 w-5 text-primary-foreground" />
+                        ) : (
+                          <GraduationCap className="h-5 w-5 text-primary-foreground" />
+                        )}
+                      </div>
+
+                      <div className="flex items-center mb-4 text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        {timelineItem.date}
+                      </div>
+
+                      <h3 className="text-xl font-bold mb-1">{timelineItem.institution}</h3>
+                      <h4 className="text-primary mb-4">{timelineItem.title}</h4>
+                      <ExpandableText text={timelineItem.description} className="text-muted-foreground" />
                     </div>
-
-                    <div className="flex items-center mb-4 text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      {item.date}
-                    </div>
-
-                    <h3 className="text-xl font-bold mb-1">{item.institution}</h3>
-                    <h4 className="text-primary mb-4">{item.title}</h4>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -321,113 +323,56 @@ export default function Portfolio() {
                 My Work
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Featured Projects</h2>
-              <p className="text-muted-foreground text-lg">
-                A collection of my most recent and notable work. Each project represents a unique challenge and
-                solution.
-              </p>
+              <p className="text-muted-foreground text-lg">{portfolioData.sections.projects.description}</p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {(
-                [
-                  {
-                    title: "E-Commerce Platform",
-                    description:
-                      "A full-featured online store with cart functionality, payment processing, and inventory management.",
-                    media: [{ type: "image", src: "/placeholder.svg", alt: "E-Commerce Dashboard" }],
-                    tags: ["Next.js", "Stripe", "Tailwind CSS"],
-                  },
-                  {
-                    title: "Task Management App",
-                    description:
-                      "A collaborative task management tool with real-time updates, drag-and-drop interface, and team features.",
-                    media: [
-                      { type: "image", src: "/placeholder.svg", alt: "Task Dashboard" },
-                      { type: "video", src: "dQw4w9WgXcQ", title: "Task Management Demo" },
-                      { type: "image", src: "/placeholder.svg", alt: "Team Collaboration" },
-                    ],
-                    tags: ["React", "Firebase", "TypeScript"],
-                  },
-                  {
-                    title: "Finance Dashboard",
-                    description:
-                      "An analytics dashboard for financial data visualization with interactive charts and reports.",
-                    media: [
-                      { type: "image", src: "/placeholder.svg", alt: "Finance Charts" },
-                      { type: "video", src: "dQw4w9WgXcQ", title: "Dashboard Overview" },
-                    ],
-                    tags: ["Vue.js", "D3.js", "Node.js"],
-                  },
-                  {
-                    title: "Social Media Platform",
-                    description: "A community platform with user profiles, content sharing, and real-time messaging.",
-                    media: [
-                      { type: "image", src: "/placeholder.svg", alt: "Social Feed" },
-                      { type: "image", src: "/placeholder.svg", alt: "User Profile" },
-                      { type: "video", src: "dQw4w9WgXcQ", title: "Platform Demo" },
-                    ],
-                    tags: ["React", "GraphQL", "MongoDB"],
-                  },
-                  {
-                    title: "Fitness Tracker",
-                    description: "A mobile-first application for tracking workouts, nutrition, and fitness goals.",
-                    media: [
-                      { type: "video", src: "dQw4w9WgXcQ", title: "Fitness App Demo" },
-                      { type: "image", src: "/placeholder.svg", alt: "Workout Tracking" },
-                    ],
-                    tags: ["React Native", "Redux", "Express"],
-                  },
-                  {
-                    title: "AI Content Generator",
-                    description:
-                      "A tool that uses AI to generate marketing content, blog posts, and social media updates.",
-                    media: [
-                      { type: "image", src: "/placeholder.svg", alt: "AI Interface" },
-                      { type: "video", src: "dQw4w9WgXcQ", title: "AI Generator Demo" },
-                      { type: "image", src: "/placeholder.svg", alt: "Generated Content" },
-                    ],
-                    tags: ["Python", "TensorFlow", "Next.js"],
-                  },
-                ] as Project[]
-              ).map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Card className="bg-secondary/15 backdrop-blur-sm border-border pt-0 overflow-hidden h-full hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group">
-                    <MediaCarousel media={project.media} projectTitle={project.title} />
+              {portfolioData.sections.projects.items.map((projectData, index) => {
+                const project = projectData as Project;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <Card className="bg-secondary/15 backdrop-blur-sm border-border pt-0 overflow-hidden h-full hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group">
+                      <MediaCarousel media={project.media} projectTitle={project.title} />
 
-                    <CardHeader>
-                      <CardTitle className="text-xl leading-4">{project.title}</CardTitle>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {project.tags.map((tag, tagIndex) => (
-                          <Badge key={tagIndex} variant="secondary" className="bg-muted text-muted-foreground">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardHeader>
+                      <CardHeader>
+                        <CardTitle className="text-xl leading-4">{project.title}</CardTitle>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {project.tags.map((tag: string, tagIndex: number) => (
+                            <Badge key={tagIndex} variant="secondary" className="bg-muted text-muted-foreground">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardHeader>
 
-                    <CardContent>
-                      <CardDescription className="text-foreground">{project.description}</CardDescription>
-                    </CardContent>
+                      <CardContent>
+                        <CardDescription className="text-foreground">{project.description}</CardDescription>
+                      </CardContent>
 
-                    <CardFooter className="flex justify-between">
-                      <Button variant="outline" size="sm">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View Live
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Github className="h-4 w-4 mr-2" />
-                        View Code
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
+                      <CardFooter className="flex justify-between">
+                        <Button variant="outline" size="sm" asChild>
+                          <ExternalLinkAnchor href={project.links.live}>
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            View Live
+                          </ExternalLinkAnchor>
+                        </Button>
+                        <Button variant="outline" size="sm" asChild>
+                          <ExternalLinkAnchor href={project.links.github}>
+                            <Github className="h-4 w-4 mr-2" />
+                            View Code
+                          </ExternalLinkAnchor>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -438,26 +383,27 @@ export default function Portfolio() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <div className="text-xl font-bold">
-                <span className="text-primary">Alex</span>Johnson
+                <span className="text-primary">{portfolioData.personal.name.split(" ")[0]}</span>
+                {portfolioData.personal.name.split(" ").slice(1).join(" ")}
               </div>
               <ExternalLinkAnchor
-                href="mailto:manoel0gustavo@gmail.com"
+                href={`mailto:${portfolioData.personal.links.email}`}
                 className="text-muted-foreground hover:text-primary hover:underline transition-colors"
               >
-                manoel0gustavo@gmail.com
+                {portfolioData.personal.links.email}
               </ExternalLinkAnchor>
             </div>
 
             <div className="flex space-x-6">
               <ExternalLinkAnchor
-                href="https://github.com/manoel0gustavo"
+                href={portfolioData.personal.links.github}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <span className="sr-only">GitHub</span>
                 <Github className="h-6 w-6" />
               </ExternalLinkAnchor>
               <ExternalLinkAnchor
-                href="https://www.linkedin.com/in/manoel0gustavo/"
+                href={portfolioData.personal.links.linkedin}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <span className="sr-only">LinkedIn</span>
@@ -468,7 +414,7 @@ export default function Portfolio() {
 
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm mx-auto">
-              © {new Date().getFullYear()} Alex Johnson. All rights reserved.
+              © {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.
             </p>
           </div>
         </div>

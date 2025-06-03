@@ -1,0 +1,168 @@
+{
+  "personal": {
+    "name": "Manoel Gustavo",
+    "title": "Full Stack developer",
+    "tagline": "As a Computer Science graduate and full stack developer, I have experience across the entire software development cycle. I am proactive, responsible, agile and communicative. My main focus is to deliver and add value to the product, regardless of technological preferences.",
+    "profileImage": "/me.jpg",
+    "links": {
+      "email": "manoel0gustavo@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/gust4vo-sales/",
+      "github": "https://github.com/Gust4voSales",
+      "resume": "https://drive.google.com/file/d/1t3RrfRJ1dqcNwkhWbw6r1lu0syl3VaHD/view?usp=drive_link"
+    }
+  },
+  "sections": {
+    "home": {
+      "description": "As a Computer Science graduate and full stack developer, I have experience across the entire software development cycle. I am proactive, responsible, agile and communicative. My main focus is to deliver and add value to the product, regardless of technological preferences."
+    },
+    "experience": {
+      "description": "A timeline of my professional and educational journey.",
+      "timeline": [
+        {
+          "date": "June 2024 - Present",
+          "institution": "LIQI DIGITAL ASSETS",
+          "type": "job",
+          "title": "Back End Developer",
+          "description": "I develop solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I develop scalable and secure solutions for critical operational routes with high volume requests, performed integrations with exchanges and third-party services, and optimized architecture reducing cloud costs by more than 10x."
+        },
+        {
+          "date": "April 2022 - June 2024",
+          "institution": "BOUNTY CARD",
+          "type": "job",
+          "title": "Full Stack Developer",
+          "description": "Led the development of web platforms with focus on performance and UX. Implemented crucial requirements in the API for the platform's payment system, integrating queues, background jobs, event triggers. Implemented +200 unit tests and supervised interns and junior developers."
+        },
+        {
+          "date": "May 2021 - April 2022",
+          "institution": "ELIFE",
+          "type": "job",
+          "title": "Mobile/Frontend Developer",
+          "description": "I developed and maintained web platforms for the Bounty Card project from inception to successful launch. Implemented +50 automated tests, refactored screens with huge tables to improve performance by up to 10x, and developed screens for applications with focus on UX and performance."
+        },
+        {
+          "date": "2019 - 2023",
+          "institution": "UFAPE",
+          "type": "study",
+          "title": "Bachelor's Degree in Computer Science",
+          "description": "Studied computer science fundamentals and software engineering principles. Gained comprehensive knowledge in algorithms, object-oriented programming, and modern web technologies."
+        }
+      ]
+    },
+    "projects": {
+      "description": "A collection of my most recent and notable work, each representing a unique challenge and solution.",
+      "items": [
+        {
+          "title": "LoopPedalOnline",
+          "description": "Online loop pedal with face recognition control - an innovative music application that combines audio processing with computer vision technology.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Loop Pedal Interface"
+            }
+          ],
+          "tags": ["JavaScript", "WebRTC", "Face Recognition"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        },
+        {
+          "title": "QuizSphere",
+          "description": "Social networking app for quizzes - a platform that combines social interaction with educational content through interactive quizzes.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Quiz Interface"
+            },
+            {
+              "type": "video",
+              "src": "dQw4w9WgXcQ",
+              "title": "QuizSphere Demo"
+            }
+          ],
+          "tags": ["React", "Node.js", "MongoDB"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        },
+        {
+          "title": "ClipMaker",
+          "description": "Online Clip Generator - a web-based tool for creating and editing video clips with an intuitive interface.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Clip Editor"
+            },
+            {
+              "type": "video",
+              "src": "dQw4w9WgXcQ",
+              "title": "ClipMaker Demo"
+            }
+          ],
+          "tags": ["JavaScript", "WebGL", "Video Processing"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        },
+        {
+          "title": "RecomendaFilmes",
+          "description": "Website for movies and series recommendations - a platform that helps users discover new content based on their preferences.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Movie Recommendations"
+            },
+            {
+              "type": "video",
+              "src": "dQw4w9WgXcQ",
+              "title": "Movie Recommender Demo"
+            }
+          ],
+          "tags": ["React", "API Integration", "Recommendation Engine"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        },
+        {
+          "title": "SistemaPetshop",
+          "description": "Fictional pet shop management system - a comprehensive solution for managing pet shop operations including inventory, appointments, and customer management.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Pet Shop Dashboard"
+            }
+          ],
+          "tags": ["Java", "Spring Boot", "MySQL"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        },
+        {
+          "title": "Ecoleta",
+          "description": "System to find nearby recycling points - a Rocketseat marathon project focused on environmental sustainability and waste management.",
+          "media": [
+            {
+              "type": "image",
+              "src": "/placeholder.svg",
+              "alt": "Recycling Points Map"
+            }
+          ],
+          "tags": ["React", "React Native", "Node.js"],
+          "links": {
+            "live": "#",
+            "github": "https://github.com/manoel0gustavo"
+          }
+        }
+      ]
+    }
+  }
+}

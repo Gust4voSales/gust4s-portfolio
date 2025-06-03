@@ -27,10 +27,9 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 
 - Mobile adjusts
   - Timeline
-  - Projects Cards
-  - General (spacing, sizes)
+  - Projects Cards (swiping modal)
+  - General (spacing, sizes, active buttons colors)
 - logic or component to render larger texts
-- Dynamic content based on JSON
 - EN/PT version
 
   - dynamic json for each lang
