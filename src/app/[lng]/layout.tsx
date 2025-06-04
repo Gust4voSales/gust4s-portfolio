@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
 import { languages } from "../i18n/settings";
+import { getT } from "../i18n";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export const metadata: Metadata = {
-  title: "Manoel Gustavo - Full Stack Developer",
-  description: "Portfolio of Manoel Gustavo, a Full Stack Developer with experience in modern web technologies.",
-};
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function generateMetadata(_: { params: { lng: string } }): Promise<Metadata> {
+  const { t } = await getT("translation");
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+  };
+}
 
 interface LngLayoutProps {
   children: React.ReactNode;
+  params: { lng: string };
 }
 
-export default function LngLayout({ children }: LngLayoutProps) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      {children}
-    </ThemeProvider>
-  );
+export default async function LngLayout({ children }: LngLayoutProps) {
+  return children;
 }

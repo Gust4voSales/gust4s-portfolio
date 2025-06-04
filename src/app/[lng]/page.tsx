@@ -182,7 +182,7 @@ export default function Portfolio() {
                   {t("sections.home.greeting")} <span className="text-primary">{portfolioData.personal.name}</span>
                 </h1>
                 <p className="text-md md:text-xl text-justify text-muted-foreground max-w-lg">
-                  {portfolioData.sections.home.description}
+                  {t("sections.home.description")}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button asChild size="lg">
@@ -250,7 +250,7 @@ export default function Portfolio() {
                 {t("sections.experience.badge")}
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">{t("navigation.experience")}</h2>
-              <p className="text-muted-foreground text-lg">{portfolioData.sections.experience.description}</p>
+              <p className="text-muted-foreground text-lg">{t("sections.experience.description")}</p>
             </motion.div>
 
             <div className="relative max-w-4xl mx-auto">
@@ -326,7 +326,7 @@ export default function Portfolio() {
                 {t("sections.projects.badge")}
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">{t("navigation.projects")}</h2>
-              <p className="text-muted-foreground text-lg">{portfolioData.sections.projects.description}</p>
+              <p className="text-muted-foreground text-lg">{t("sections.projects.description")}</p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -358,7 +358,7 @@ export default function Portfolio() {
                         <CardDescription className="text-foreground">{project.description}</CardDescription>
                       </CardContent>
 
-                      <CardFooter className="flex justify-between">
+                      <CardFooter className="flex justify-between mt-auto">
                         <Button variant="outline" size="sm" asChild>
                           <ExternalLinkAnchor href={project.links.live}>
                             <ExternalLink className="h-4 w-4 mr-2" />

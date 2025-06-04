@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "Manoel Gustavo - Full Stack Developer",
+    "description": "Portfolio of Manoel Gustavo, a Full Stack Developer with experience in modern web technologies."
+  },
   "navigation": {
     "home": "Home",
     "experience": "Experience",
@@ -17,13 +21,16 @@
   "sections": {
     "home": {
       "badge": "Full Stack developer",
-      "greeting": "Hi, I'm"
+      "greeting": "Hi, I'm",
+      "description": "As a Computer Science graduate and full stack developer, I have experience across the entire software development cycle. I am proactive, responsible, agile and communicative. My main focus is to deliver and add value to the product, regardless of technological preferences."
     },
     "experience": {
-      "badge": "My Journey"
+      "badge": "My Journey",
+      "description": "A timeline of my professional and educational journey."
     },
     "projects": {
-      "badge": "My Work"
+      "badge": "My Work",
+      "description": "A collection of my most recent and notable work, each representing a unique challenge and solution."
     }
   },
   "media": {

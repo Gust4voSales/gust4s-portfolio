@@ -39,7 +39,7 @@ export function MobileNav({ activeSection, scrollToSection, navigationItems }: M
       <SheetContent side="right" className="w-[300px] sm:w-[400px]">
         <SheetHeader className="border-b border-border pb-4">
           <SheetTitle className="text-left">
-            <PortfolioTitle />
+            <PortfolioTitle asLink={false} />
           </SheetTitle>
         </SheetHeader>
 

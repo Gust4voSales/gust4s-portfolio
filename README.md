@@ -27,7 +27,7 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 
 - Mobile adjusts
   - General (spacing, sizes)
+- Fill jsons
 - dynamic json for each lang
-- 404 with link to home page
 
 - Optionally, filter projects by tags
