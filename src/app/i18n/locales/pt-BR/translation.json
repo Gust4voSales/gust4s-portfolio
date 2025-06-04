@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "home": "Início",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "resume": "Currículo"
+  },
+  "buttons": {
+    "contactMe": "Entre em Contato",
+    "viewResume": "Ver Currículo",
+    "viewLive": "Acessar",
+    "viewCode": "Ver Código",
+    "backToTop": "Voltar ao topo",
+    "readMore": "Ler mais",
+    "showLess": "Mostrar menos"
+  },
+  "sections": {
+    "home": {
+      "badge": "Desenvolvedor Full Stack",
+      "greeting": "Olá, eu sou"
+    },
+    "experience": {
+      "badge": "Minha Jornada"
+    },
+    "projects": {
+      "badge": "Meu Trabalho"
+    }
+  },
+  "media": {
+    "of": "de",
+    "video": "Vídeo"
+  },
+  "mobile": {
+    "openNavigation": "Abrir menu de navegação",
+    "resume": "Currículo"
+  },
+  "footer": {
+    "copyright": "Todos os direitos reservados."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "resume": "Resume"
+  },
+  "buttons": {
+    "contactMe": "Contact Me",
+    "viewResume": "View Resume",
+    "viewLive": "View Live",
+    "viewCode": "View Code",
+    "backToTop": "Back to top",
+    "readMore": "Read more",
+    "showLess": "Show less"
+  },
+  "sections": {
+    "home": {
+      "badge": "Full Stack developer",
+      "greeting": "Hi, I'm"
+    },
+    "experience": {
+      "badge": "My Journey"
+    },
+    "projects": {
+      "badge": "My Work"
+    }
+  },
+  "media": {
+    "of": "of",
+    "video": "Video"
+  },
+  "mobile": {
+    "openNavigation": "Open navigation menu",
+    "resume": "Resume"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

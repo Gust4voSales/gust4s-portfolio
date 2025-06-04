@@ -27,9 +27,7 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 
 - Mobile adjusts
   - General (spacing, sizes)
-- EN/PT version
-
-  - dynamic json for each lang
-  - i18n for buttons and sections that are not dynamic (like "View code" button text)
+- dynamic json for each lang
+- 404 with link to home page
 
 - Optionally, filter projects by tags

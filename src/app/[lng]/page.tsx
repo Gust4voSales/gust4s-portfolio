@@ -26,6 +26,9 @@ import { MediaCarousel } from "@/components/media-carousel";
 import { ExternalLinkAnchor } from "@/components/ui/external-link-anchor";
 import portfolioData from "@/data/portfolio.json";
 import { ExpandableText } from "@/components/expandable-text";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useT } from "@/app/i18n/client";
+import { PortfolioTitle } from "@/components/portfolio-title";
 
 interface Project {
   title: string;
@@ -58,13 +61,14 @@ interface NavigationItem {
 }
 
 export default function Portfolio() {
+  const { t } = useT("translation");
   const [activeSection, setActiveSection] = useState("home");
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   const navigationItems: NavigationItem[] = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "experience", label: "Experience", icon: Briefcase },
-    { id: "projects", label: "Projects", icon: FolderOpen },
+    { id: "home", label: t("navigation.home"), icon: Home },
+    { id: "experience", label: t("navigation.experience"), icon: Briefcase },
+    { id: "projects", label: t("navigation.projects"), icon: FolderOpen },
   ];
 
   useEffect(() => {
@@ -121,9 +125,7 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               className="text-xl font-bold"
             >
-              <span className="text-muted-foreground">Gust</span>
-              <span className="text-primary">4</span>
-              <span className="text-muted-foreground">s</span>
+              <PortfolioTitle />
             </motion.div>
             <ul className="hidden md:flex space-x-8">
               {navigationItems.map((item) => (
@@ -139,12 +141,13 @@ export default function Portfolio() {
                 </li>
               ))}
             </ul>
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" className="hidden md:flex" asChild>
                 <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
-                  Resume <FileText className="ml-2 h-4 w-4" />
+                  {t("navigation.resume")} <FileText className="ml-2 h-4 w-4" />
                 </ExternalLinkAnchor>
               </Button>
+              <LanguageSwitcher />
               <ThemeSwitch />
               <MobileNav
                 activeSection={activeSection}
@@ -173,10 +176,10 @@ export default function Portfolio() {
                 className="space-y-6 flex flex-col items-center lg:items-start"
               >
                 <Badge variant="outline" className="px-4 py-1 text-sm border-primary/50 bg-primary/5 ">
-                  {portfolioData.personal.title}
+                  {t("sections.home.badge")}
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                  Hi, I&apos;m <span className="text-primary">{portfolioData.personal.name}</span>
+                  {t("sections.home.greeting")} <span className="text-primary">{portfolioData.personal.name}</span>
                 </h1>
                 <p className="text-md md:text-xl text-justify text-muted-foreground max-w-lg">
                   {portfolioData.sections.home.description}
@@ -184,13 +187,13 @@ export default function Portfolio() {
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button asChild size="lg">
                     <ExternalLinkAnchor href={`mailto:${portfolioData.personal.links.email}`}>
-                      Contact Me
+                      {t("buttons.contactMe")}
                       <Mail className="ml-2 h-4 w-4" />
                     </ExternalLinkAnchor>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
                     <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
-                      View Resume
+                      {t("buttons.viewResume")}
                       <FileText className="ml-2 h-4 w-4" />
                     </ExternalLinkAnchor>
                   </Button>
@@ -244,9 +247,9 @@ export default function Portfolio() {
               className="text-center mb-16 max-w-3xl mx-auto"
             >
               <Badge variant="outline" className="mb-4 px-4 py-1 text-sm border-primary/50 bg-primary/5">
-                My Journey
+                {t("sections.experience.badge")}
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Professional Experience</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">{t("navigation.experience")}</h2>
               <p className="text-muted-foreground text-lg">{portfolioData.sections.experience.description}</p>
             </motion.div>
 
@@ -320,9 +323,9 @@ export default function Portfolio() {
               className="text-center mb-16 max-w-3xl mx-auto"
             >
               <Badge variant="outline" className="mb-4 px-4 py-1 text-sm border-primary/50 bg-primary/5">
-                My Work
+                {t("sections.projects.badge")}
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">{t("navigation.projects")}</h2>
               <p className="text-muted-foreground text-lg">{portfolioData.sections.projects.description}</p>
             </motion.div>
 
@@ -359,13 +362,13 @@ export default function Portfolio() {
                         <Button variant="outline" size="sm" asChild>
                           <ExternalLinkAnchor href={project.links.live}>
                             <ExternalLink className="h-4 w-4 mr-2" />
-                            View Live
+                            {t("buttons.viewLive")}
                           </ExternalLinkAnchor>
                         </Button>
                         <Button variant="outline" size="sm" asChild>
                           <ExternalLinkAnchor href={project.links.github}>
                             <Github className="h-4 w-4 mr-2" />
-                            View Code
+                            {t("buttons.viewCode")}
                           </ExternalLinkAnchor>
                         </Button>
                       </CardFooter>
@@ -414,7 +417,7 @@ export default function Portfolio() {
 
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm mx-auto">
-              © {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.
+              © {new Date().getFullYear()} {portfolioData.personal.name}. {t("footer.copyright")}
             </p>
           </div>
         </div>
@@ -430,7 +433,7 @@ export default function Portfolio() {
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
         className={`fixed cursor-pointer bottom-8 right-8 z-50 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:shadow-xl active:shadow-xl transition-all duration-300 hover:scale-110 active:scale-110`}
-        aria-label="Back to top"
+        aria-label={t("buttons.backToTop")}
       >
         <ArrowUp className="h-5 w-5" />
       </motion.button>

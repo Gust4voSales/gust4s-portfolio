@@ -1,5 +1,6 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { useT } from "@/app/i18n/client";
 
 interface ExpandableTextProps {
   text: string;
@@ -8,6 +9,7 @@ interface ExpandableTextProps {
 }
 
 export function ExpandableText({ text, maxLength = 150, className = "" }: ExpandableTextProps) {
+  const { t } = useT("translation");
   const [isExpanded, setIsExpanded] = useState(false);
   const shouldTruncate = text.length > maxLength;
 
@@ -24,11 +26,11 @@ export function ExpandableText({ text, maxLength = 150, className = "" }: Expand
       >
         {isExpanded ? (
           <>
-            Show less <ChevronUp className="h-3 w-3" />
+            {t("buttons.showLess")} <ChevronUp className="h-3 w-3" />
           </>
         ) : (
           <>
-            Read more <ChevronDown className="h-3 w-3" />
+            {t("buttons.readMore")} <ChevronDown className="h-3 w-3" />
           </>
         )}
       </button>

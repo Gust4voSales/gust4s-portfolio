@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { Badge } from "./ui/badge";
 import { createPortal } from "react-dom";
+import { useT } from "@/app/i18n/client";
 
 export interface MediaItem {
   type: "image" | "video";
@@ -60,6 +61,7 @@ function useSwipe(onSwipeLeft: () => void, onSwipeRight: () => void) {
 }
 
 function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectTitle }: MediaModalProps) {
+  const { t } = useT("translation");
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -159,7 +161,7 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                 <div className="flex items-center space-x-4">
                   <h3 className="text-xl font-semibold">{projectTitle}</h3>
                   <Badge variant="outline" className="text-sm">
-                    {currentIndex + 1} of {media.length}
+                    {currentIndex + 1} {t("media.of")} {media.length}
                   </Badge>
                 </div>
                 <Button variant="ghost" size="icon" onClick={onClose} className="h-10 w-10">
@@ -211,7 +213,7 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
                         <div className="absolute top-4 left-4">
                           <div className="bg-black/70 text-white px-2 py-1 rounded text-xs flex items-center">
                             <Play className="h-3 w-3 mr-1" />
-                            Video
+                            {t("media.video")}
                           </div>
                         </div>
                       </div>
@@ -278,6 +280,7 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
 }
 
 export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
+  const { t } = useT("translation");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
@@ -401,7 +404,7 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
           {currentMedia.type === "video" && (
             <div className="bg-black/70 text-white px-2 py-1 rounded text-xs flex items-center">
               <Play className="h-3 w-3 mr-1" />
-              Video
+              {t("media.video")}
             </div>
           )}
         </div>
