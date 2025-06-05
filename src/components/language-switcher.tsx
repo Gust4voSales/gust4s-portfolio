@@ -9,7 +9,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 
 const languageNames = {
   en: { name: "English", flag: "🇺🇸" },
@@ -25,6 +24,11 @@ export function LanguageSwitcher() {
     return `/${newLng}${pathname.replace(`/${currentLng}`, "")}`;
   };
 
+  const handleLanguageChange = (newLng: string) => {
+    const path = getLocalizedPath(newLng);
+    window.location.href = path; // Use window.location for a full page reload
+  };
+
   const currentLanguage = languageNames[currentLng as keyof typeof languageNames];
 
   return (
@@ -37,14 +41,13 @@ export function LanguageSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="space-y-1">
         {Object.entries(languageNames).map(([code, { name, flag }]) => (
-          <DropdownMenuItem key={code} asChild>
-            <Link
-              href={getLocalizedPath(code)}
-              className={`cursor-pointer w-full ${currentLng === code ? "bg-accent text-accent-foreground" : ""}`}
-            >
-              <span className="mr-2">{flag}</span>
-              {name}
-            </Link>
+          <DropdownMenuItem
+            key={code}
+            onClick={() => handleLanguageChange(code)}
+            className={`cursor-pointer w-full ${currentLng === code ? "bg-accent text-accent-foreground" : ""}`}
+          >
+            <span className="mr-2">{flag}</span>
+            {name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
