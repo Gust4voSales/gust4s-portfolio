@@ -428,7 +428,7 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <div className="text-xl font-bold">
+              <div className="text-xl font-bold text-center md:text-left">
                 <span className="text-primary">{portfolioData.personal.name.split(" ")[0]}</span>
                 {portfolioData.personal.name.split(" ").slice(1).join(" ")}
               </div>
