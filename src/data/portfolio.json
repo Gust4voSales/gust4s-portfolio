@@ -1,163 +1,382 @@
 {
   "personal": {
     "name": "Manoel Gustavo",
-    "title": "Full Stack developer",
-    "tagline": "As a Computer Science graduate and full stack developer, I have experience across the entire software development cycle. I am proactive, responsible, agile and communicative. My main focus is to deliver and add value to the product, regardless of technological preferences.",
     "profileImage": "/me.jpg",
     "links": {
       "email": "manoel0gustavo@gmail.com",
       "linkedin": "https://www.linkedin.com/in/gust4vo-sales/",
       "github": "https://github.com/Gust4voSales",
-      "resume": "https://drive.google.com/file/d/1t3RrfRJ1dqcNwkhWbw6r1lu0syl3VaHD/view?usp=drive_link"
+      "resume": "https://drive.google.com/file/d/1sCHsktOiuSSGjg5QK2WJRZqsQZVlS-IY/view?usp=drive_link",
+      "resumeEN": "https://drive.google.com/file/d/1t3RrfRJ1dqcNwkhWbw6r1lu0syl3VaHD/view?usp=drive_link"
     }
   },
   "sections": {
-    "home": {
-      "description": "As a Computer Science graduate and full stack developer, I have experience across the entire software development cycle. I am proactive, responsible, agile and communicative. My main focus is to deliver and add value to the product, regardless of technological preferences."
-    },
     "experience": {
       "timeline": [
         {
-          "date": "June 2024 - Present",
-          "institution": "LIQI DIGITAL ASSETS",
+          "date": "Junho 2024 - Presente",
+          "dateEN": "June 2024 - Present",
+          "institution": "Liqi Digital Assets",
           "type": "job",
           "title": "Back End Developer",
-          "description": "I develop solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I develop scalable and secure solutions for critical operational routes with high volume requests, performed integrations with exchanges and third-party services, and optimized architecture reducing cloud costs by more than 10x."
+          "description": "I develop solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I develop scalable and secure solutions for critical operational routes with high volume requests and performed integrations with exchanges and third-party services.",
+          "descriptionEN": "I develop solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I develop scalable and secure solutions for critical operational routes with high volume requests and performed integrations with exchanges and third-party services."
         },
         {
-          "date": "April 2022 - June 2024",
-          "institution": "BOUNTY CARD",
+          "date": "Abril 2022 - Junho 2024",
+          "dateEN": "April 2022 - June 2024",
+          "institution": "Cartão Bounty",
           "type": "job",
           "title": "Full Stack Developer",
-          "description": "Led the development of web platforms with focus on performance and UX. Implemented crucial requirements in the API for the platform's payment system, integrating queues, background jobs, event triggers. Implemented +200 unit tests and supervised interns and junior developers."
+          "description": "Liderei o desenvolvimento de plataformas web com foco em performance e experiência do usuário. Implementei requisitos cruciais na API para o sistema de pagamentos da plataforma, integrando filas e processos em segundo plano. Também supervisionei estagiários e desenvolvedores juniores.",
+          "descriptionEN": "Led the development of web platforms with focus on performance and UX. Implemented crucial requirements in the API for the platform's payment system, integrating queues and background jobs. Also supervised interns and junior developers."
         },
         {
-          "date": "May 2021 - April 2022",
-          "institution": "ELIFE",
+          "date": "Maio 2021 - Abril 2022",
+          "dateEN": "May 2021 - April 2022",
+          "institution": "Elife",
           "type": "job",
           "title": "Mobile/Frontend Developer",
-          "description": "I developed and maintained web platforms for the Bounty Card project from inception to successful launch. Implemented +50 automated tests, refactored screens with huge tables to improve performance by up to 10x, and developed screens for applications with focus on UX and performance."
+          "description": "Desenvolvi e mantive plataformas web para o projeto Bounty Card, desde a concepção até o lançamento. Implementei testes automatizados, refatorei telas com grandes tabelas, melhorando a performance em até 10x, e desenvolvi interfaces focadas em UX e desempenho.",
+          "descriptionEN": "I developed and maintained web platforms for the Bounty Card project from inception to successful launch. Implemented automated tests, refactored screens with huge tables to improve performance by up to 10x, and developed screens for applications with focus on UX and performance."
         },
         {
           "date": "2019 - 2023",
+          "dateEN": "2019 - 2023",
           "institution": "UFAPE",
           "type": "study",
           "title": "Bachelor's Degree in Computer Science",
-          "description": "Studied computer science fundamentals and software engineering principles. Gained comprehensive knowledge in algorithms, object-oriented programming, and modern web technologies."
+          "description": "Studied computer science fundamentals and software engineering principles. Gained comprehensive knowledge in algorithms, object-oriented programming, and modern web technologies.",
+          "descriptionEN": "Studied computer science fundamentals and software engineering principles. Gained comprehensive knowledge in algorithms, object-oriented programming, and modern web technologies."
+        },
+        {
+          "date": "2016",
+          "dateEN": "2016",
+          "institution": "IFPE",
+          "type": "study",
+          "title": "Primeiro contato com a programação",
+          "description": "No curso técnico de informática, tive meu primeiro contato com a programação, aprendendo conceitos básicos de lógica de programação e algoritmos. Iniciando aí, descobri minha paixão por programação e decidi me dedicar a ela.",
+          "descriptionEN": "In the technical course in computer science, I had my first contact with programming, learning basic concepts of programming logic and algorithms. Starting here, I discovered my passion for programming and decided to dedicate myself to it."
         }
       ]
     },
     "projects": {
       "items": [
         {
-          "title": "LoopPedalOnline",
-          "description": "Online loop pedal with face recognition control - an innovative music application that combines audio processing with computer vision technology.",
+          "title": "Loop Pedal Online",
+          "description": "Simulador de loop pedal online com controle intuitivo através de expressões faciais capturadas pela webcam.",
+          "descriptionEN": "Online loop pedal simulator with intuitive control through facial expressions captured by webcam.",
+          "media": [
+            {
+              "type": "video",
+              "src": "2r3kzW5Bq9o",
+              "title": "Youtube Demo"
+            }
+          ],
+          "tags": ["react", "typescript", "nextjs", "face-recognition", "face-api", "tailwindcss"],
+          "links": {
+            "live": "https://loop-pedal-online.vercel.app/",
+            "github": "https://github.com/Gust4voSales/loop-pedal-online"
+          }
+        },
+        {
+          "title": "Kings League Amadora",
+          "description": "Leve a emoção da Kings League para seus jogos! Gerencie suas partidas com as regras da competição criada por Gerard Piqué. Transforme seu futebol society em uma experiência cheia de estratégia, surpresas e diversão.",
+          "descriptionEN": "Bring the excitement of the Kings League to your games! You can manage your matches using the thrilling rules of the competition created by Gerard Piqué. Turn your soccer games into a unique experience full of strategy, surprises, and fun.",
           "media": [
             {
               "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Loop Pedal Interface"
+              "src": "https://play-lh.googleusercontent.com/MlM_wM76--yVh8f5sNMnBROp2zUyp6gaNrq1I1xkV3lV5sg2QHPr4InVsHf46Kyzug=w840-h1080-rw",
+              "title": "Kings League App logo"
+            },
+            {
+              "type": "image",
+              "src": "https://play-lh.googleusercontent.com/jte_C4f1IXZ11Pab3X1M1VER62SeHjMllEIYO2Q2uFt4deRIs-scT-JORGRSD4gcNpwV=w2560-h1440-rw",
+              "title": "Kings League Screenshot 1"
+            },
+            {
+              "type": "image",
+              "src": "https://play-lh.googleusercontent.com/SsQIVeDoCHYb-ezkzCJVNVQcIKYZPyjswJ9JqT1Kj3PsVIZrAAG71q0sKURV0Auz7e8=w2560-h1440-rw",
+              "title": "Kings League Screenshot 2"
+            },
+            {
+              "type": "image",
+              "src": "https://play-lh.googleusercontent.com/0iil7TOOahOEZYuS2LIK9cf5EoB8R2-8ILDH3uC0KuHJPHucmOuxDeOuRMg2ESDB2cE=w2560-h1440-rw",
+              "title": "Kings League Screenshot 3"
             }
           ],
-          "tags": ["JavaScript", "WebRTC", "Face Recognition"],
+          "tags": ["typescript", "mobile", "react-native", "expo", "native-wind", "gluestack-ui", "zustand"],
           "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
+            "live": "https://play.google.com/store/apps/details?id=com.gust4.kingsleagueamadora",
+            "github": "https://github.com/Gust4voSales/kings-league-app"
           }
         },
         {
           "title": "QuizSphere",
-          "description": "Social networking app for quizzes - a platform that combines social interaction with educational content through interactive quizzes.",
+          "description": "O QuizSphere é um aplicativo que combina quizzes com elementos de rede social. Permite jogar, criar quizzes públicos ou privados, curtir, favoritar e pesquisar quizzes. Também é possível adicionar amigos, compartilhar quizzes e receber notificações em tempo real sobre interações, como novos amigos ou quizzes compartilhados.",
+          "descriptionEN": "QuizSphere is an app that combines quizzes with social network features. Users can play, create public or private quizzes, like, favorite, and search for quizzes. It also allows adding friends, sharing quizzes, and receiving real-time notifications about interactions like new friends or shared quizzes.",
           "media": [
             {
-              "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Quiz Interface"
+              "type": "video",
+              "src": "bO2aJ0DFudk",
+              "title": "Youtube Demo"
             },
             {
-              "type": "video",
-              "src": "dQw4w9WgXcQ",
-              "title": "QuizSphere Demo"
-            }
-          ],
-          "tags": ["React", "Node.js", "MongoDB"],
-          "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
-          }
-        },
-        {
-          "title": "ClipMaker",
-          "description": "Online Clip Generator - a web-based tool for creating and editing video clips with an intuitive interface.",
-          "media": [
-            {
               "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Clip Editor"
+              "src": "https://camo.githubusercontent.com/2da8e25da95b7f74848bb0bfa5c76202c72892c6948f860275ea9aadb3b020a6/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6a4232364930746859486c53526179632d624178364d6f5a71616f583834527670324235685230494a43794864307633334a317271596e36786f4f786d6876747361633d77313932302d683936392d7277",
+              "title": "QuizSphere logo"
             },
             {
-              "type": "video",
-              "src": "dQw4w9WgXcQ",
-              "title": "ClipMaker Demo"
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/ddeef3b57115fac7ab9beb38756f943d72e0ff218595079b99819106b43c647c/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6f5a42466d70745f45623651794b643957566b3153354a396b685a6a656262534c596e716138756848656f4a6e755858587a555f566e4e5a614d355332626a4c6175324f3d77313932302d683936392d7277",
+              "title": "QuizSphere Screenshot 1"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/27162771fc977203815e895608b175cbc538edb7298b6ba10bbc9346d8453e33/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6743713342314752526a384f442d5065486c56386675666c6a7235755677472d30536a3635326b506a58475078677366624832424e396639324d7176623956754d67677a3d77313932302d683936392d7277",
+              "title": "QuizSphere Screenshot 2"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/4f24c37d7f765ab0663412c74d38d559cb05abe9e9e9fd06a2bb69740633c857/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f414145536c756a677a51364a6d334830685f37326a35734f7046796f4c71727955556458357763677370795a6f4d784263614f4f6455544c626a49316d3851416f413d77313932302d683936392d7277",
+              "title": "QuizSphere Screenshot 3"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/ba24e6893df07daadaa9d285eff61416c5526f478fe69adc9b23061c401aa00a/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f5642425147583872384642486b6558377463666a45504e37396a377a62475331346e687533495873724465306f704b724c5561645f72376439495453715a596c41673d773732302d683331302d7277",
+              "title": "QuizSphere Screenshot 4"
             }
           ],
-          "tags": ["JavaScript", "WebGL", "Video Processing"],
+          "tags": [
+            "express",
+            "nodejs",
+            "websocket",
+            "mongodb",
+            "jwt",
+            "javascript",
+            "react-native",
+            "mobile",
+            "game",
+            "quiz",
+            "social-network"
+          ],
           "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
+            "live": "",
+            "github": "https://github.com/Gust4voSales/QuizSphere-Cliente"
           }
         },
         {
           "title": "RecomendaFilmes",
-          "description": "Website for movies and series recommendations - a platform that helps users discover new content based on their preferences.",
+          "description": "Plataforma criada em React que recomenda filmes e séries, permitindo combinar múltiplos filtros para encontrar algo do seu gosto.",
+          "descriptionEN": "Platform created in React that recommends movies and series, allowing users to combine multiple filters to find something they like.",
           "media": [
-            {
-              "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Movie Recommendations"
-            },
             {
               "type": "video",
-              "src": "dQw4w9WgXcQ",
-              "title": "Movie Recommender Demo"
+              "src": "DhE6_Zahem8",
+              "title": "RecomendaFilmes Demo"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/RecomendaFilmes/raw/master/.github/filters.png",
+              "title": "RecomendaFilmes screenshot 1"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/RecomendaFilmes/raw/master/.github/results.png",
+              "title": "RecomendaFilmes screenshot 2"
             }
           ],
-          "tags": ["React", "API Integration", "Recommendation Engine"],
+          "tags": ["react", "typescript", "movies", "series", "recommendation", "tmdb-api"],
           "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
+            "live": "https://recomenda-filmes.vercel.app/",
+            "github": "https://github.com/Gust4voSales/RecomendaFilmes"
           }
         },
         {
-          "title": "SistemaPetshop",
-          "description": "Fictional pet shop management system - a comprehensive solution for managing pet shop operations including inventory, appointments, and customer management.",
+          "title": "ClipMaker",
+          "description": "Aplicativo web que automatiza a edição de videoclipes com apenas alguns cliques. O usuário envia um vídeo e uma música, define a duração do clipe e escolhe filtros visuais; o sistema gera automaticamente um videoclipe com cortes e transições aleatórias.",
+          "descriptionEN": "Web application that automates videoclip editing with just a few clicks. The user uploads a video and a song, sets the clip duration, and selects visual filters; the system automatically generates a videoclip with random cuts and transitions.",
           "media": [
             {
-              "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Pet Shop Dashboard"
+              "type": "video",
+              "src": "GwiFs2uyXtg",
+              "title": "Youtube Demo"
             }
           ],
-          "tags": ["Java", "Spring Boot", "MySQL"],
+          "tags": ["nextjs", "typescript", "video-editing", "ffmpeg", "styled-components"],
           "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
+            "live": "https://clip-maker.vercel.app/",
+            "github": "https://github.com/Gust4voSales/ClipMaker"
           }
         },
         {
-          "title": "Ecoleta",
-          "description": "System to find nearby recycling points - a Rocketseat marathon project focused on environmental sustainability and waste management.",
+          "title": "Petshop Project",
+          "description": "Sistema fictício de gerenciamento de petshop desenvolvido com NestJS e Next.js, permitindo cadastro e gerenciamento de clientes, pets e serviços, além de agendamento de atendimentos.",
+          "descriptionEN": "Fictitious petshop management system developed with NestJS and Next.js, allowing registration and management of clients, pets, and services, as well as appointment scheduling.",
+          "media": [],
+          "tags": [
+            "nestjs",
+            "nodejs",
+            "nextjs",
+            "typescript",
+            "prisma",
+            "react-query",
+            "zustand",
+            "passportjs",
+            "postgresql",
+            "jwt",
+            "crud"
+          ],
+          "links": {
+            "live": "https://petshop-system-project.vercel.app/",
+            "github": "https://github.com/Gust4voSales/petshop-project"
+          }
+        },
+        {
+          "title": "Lockdown Platformer",
+          "description": "Jogo de plataforma 2D com temática da Covid-19, desenvolvido no Unity. Gráficos em pixel art.",
+          "descriptionEN": "2D platformer game with a Covid-19 theme, developed in Unity. Pixel art graphics.",
           "media": [
             {
               "type": "image",
-              "src": "/placeholder.svg",
-              "alt": "Recycling Points Map"
+              "src": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY/raw/main/Assets/Art/icon-done.png",
+              "title": "Lockdown Platformer Logo"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY/raw/main/.github/1.png",
+              "title": "Lockdown Platformer Screenshot 1"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY/raw/main/.github/2.png",
+              "title": "Lockdown Platformer Screenshot 2"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY/raw/main/.github/3.png",
+              "title": "Lockdown Platformer Screenshot 3"
             }
           ],
-          "tags": ["React", "React Native", "Node.js"],
+          "tags": ["unity", "c#", "game", "platformer", "pixel-art", "covid-19"],
           "links": {
-            "live": "#",
-            "github": "https://github.com/manoel0gustavo"
+            "live": "https://gust4vosales.itch.io/lockdown-platformer",
+            "github": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY"
+          }
+        },
+        {
+          "title": "Marvin - Virtual Assistant",
+          "description": "Assistente virtual dinâmico desenvolvido em Python, capaz de abrir sites, executar programas, tocar músicas e configurar lembretes. Permite adicionar novos comandos de voz sem necessidade de codificação.",
+          "descriptionEN": "Dynamic virtual assistant developed in Python, capable of opening websites, running programs, playing music, and setting reminders. Allows adding new voice commands without coding.",
+          "media": [
+            {
+              "type": "video",
+              "src": "jjMbnQShabM",
+              "title": "Youtube Demo"
+            }
+          ],
+          "tags": ["python", "voice-recognition", "automation", "assistant", "pyttsx3", "pyaudio", "bot"],
+          "links": {
+            "live": "",
+            "github": "https://github.com/Gust4voSales/Marvin-VirtualAssistent"
+          }
+        },
+        {
+          "title": "TIMES - Gerenciador de Foco",
+          "description": "Aplicativo móvel desenvolvido em React Native para auxiliar na produtividade, baseado no protocolo TIMES de Vitor Santos. Permite gerenciar sessões de foco e pausas de forma eficiente.",
+          "descriptionEN": "Mobile application developed in React Native to assist with productivity, based on Vitor Santos' TIMES protocol. Allows efficient management of focus sessions and breaks.",
+          "media": [
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/f825f3e03d005c6a2b817efca46850d10ce73a87a3ae3ec6ffe0c197a44c04cb/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f3661436b4d4e6b493076357568625f6865376c417334383951544f6f6330446d6d4a4d46465655514e2d637764707350774354644f2d575a527a416834304970665579583d77313932302d683933372d7277",
+              "title": "TIMES - Gerenciador de Foco Logo"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/aee7df69af99c07f564f709fc846a3e49d592f5e9e489d8be9035eb8efc0f5ba/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6f5750776578493531494f6b6f334872365058566744347132563361617045756c3543496a65624d3441364c4e566d54776369384d455f6e4e78545f58575a6c6861633d77313932302d683933372d7277",
+              "title": "TIMES - Screenshot 1"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/30e0eb1cc0c01ee55d194eaf4f998ed98a59be94446758d9ceb8105a621986d1/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f4c46705f4441527669426b6a78772d6f367669624735366f62506f36655a7a694f6b44534b62695444596154592d43386f31695a6e514b48446f33594166583865413d77313932302d683731312d7277",
+              "title": "TIMES - Screenshot 2"
+            },
+            {
+              "type": "image",
+              "src": "https://camo.githubusercontent.com/cee85edb0a0490e2d68e8d702e95f097068dba0a9f828e6232237dbf84d846dd/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f67476e786d5f39564b5138544c6469386b4559695a6431337532705f6b457632726361525f624576314964527530454c6b706364756d3057515f7a65724e4d76415a303d77313932302d683731312d7277",
+              "title": "TIMES - Screenshot 3"
+            }
+          ],
+          "tags": ["react-native", "productivity", "focus", "mobile"],
+          "links": {
+            "live": "",
+            "github": "https://github.com/Gust4voSales/TIMES-Gerenciador-de-Foco"
+          }
+        },
+        {
+          "title": "League of Legends - Bot de Fila",
+          "description": "Bot que detecta automaticamente quando uma partida é encontrada no League of Legends, aceita a fila e envia um e-mail notificando o usuário.",
+          "descriptionEN": "Bot that automatically detects when a match is found in League of Legends, accepts the queue, and sends an email notifying the user.",
+          "media": [
+            {
+              "type": "video",
+              "src": "yN_Gj9AYjF8",
+              "title": "Youtube Tutorial"
+            }
+          ],
+          "tags": ["python", "automation", "pyautogui", "opencv", "bot"],
+          "links": {
+            "live": "",
+            "github": "https://github.com/Gust4voSales/LeagueOfLegends-Bot-de-Fila"
+          }
+        },
+        {
+          "title": "SpellsTimer",
+          "description": "Aplicativo desktop overlay que ajuda jogadores de League of Legends a acompanhar o tempo de recarga (cooldown) das habilidades dos inimigos, permanecendo sempre visível durante o jogo.",
+          "descriptionEN": "Desktop overlay application that helps League of Legends players track enemy spell cooldowns, remaining always visible during gameplay.",
+          "media": [
+            {
+              "type": "video",
+              "src": "ZFd7fGYQGPc",
+              "title": "YouTube Demo"
+            },
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/SpellsTimer/raw/main/.github/time-finishing.png",
+              "title": "SpellsTimer Screenshot 1"
+            }
+          ],
+          "tags": ["electron", "javascript", "league-of-legends", "desktop"],
+          "links": {
+            "live": "",
+            "github": "https://github.com/Gust4voSales/SpellsTimer"
+          }
+        },
+        {
+          "title": "ProxCluster Deduplicator",
+          "description": "Framework modularizado para resolução incremental de entidades, utilizando conceitos semelhantes ao algoritmo K-Means para agrupar duplicatas encontradas. Desenvolvido como trabalho de conclusão de curso em Ciência da Computação na UFAPE.",
+          "descriptionEN": "Modular framework for incremental entity resolution, leveraging concepts similar to the K-Means algorithm to cluster found duplicates. Developed as a final paper for the Computer Science degree at UFAPE.",
+          "media": [
+            {
+              "type": "image",
+              "src": "https://github.com/Gust4voSales/proxcluster-deduplicator/raw/main/.github/proxcluster-diagram.png",
+              "title": "ProxCluster Deduplicator Screenshot 1"
+            }
+          ],
+          "tags": [
+            "python",
+            "data-science",
+            "pandas",
+            "numpy",
+            "polars",
+            "entity-resolution",
+            "k-means",
+            "clustering",
+            "college"
+          ],
+          "links": {
+            "live": "",
+            "github": "https://github.com/Gust4voSales/proxcluster-deduplicator"
           }
         }
       ]

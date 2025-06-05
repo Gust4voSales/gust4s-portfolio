@@ -171,11 +171,11 @@ function MediaModal({ media, currentIndex, isOpen, onClose, onNavigate, projectT
 
               {/* Media Content */}
               <div className="flex-1 relative bg-surface/50 group min-h-0 overflow-hidden">
-                {currentMedia.type === "image" ? (
+                {currentMedia?.type === "image" || !currentMedia ? (
                   <div className="relative w-3/4 mx-auto h-full flex items-center justify-center p-4">
                     <Image
-                      src={currentMedia.src || "/placeholder.svg"}
-                      alt={currentMedia.alt || `${projectTitle} screenshot`}
+                      src={currentMedia?.src || "/placeholder.svg"}
+                      alt={currentMedia?.alt || `${projectTitle} screenshot`}
                       width={1600}
                       height={1200}
                       className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
@@ -323,10 +323,10 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
         onTouchMove={swipeHandlers.onTouchMove}
         onTouchEnd={swipeHandlers.onTouchEnd}
       >
-        {currentMedia.type === "image" ? (
+        {currentMedia?.type === "image" || !currentMedia ? (
           <Image
-            src={currentMedia.src || "/placeholder.svg"}
-            alt={currentMedia.alt || `${projectTitle} screenshot`}
+            src={currentMedia?.src || "/placeholder.svg"}
+            alt={currentMedia?.alt || `${projectTitle} screenshot`}
             width={500}
             height={300}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -401,7 +401,7 @@ export function MediaCarousel({ media, projectTitle }: MediaCarouselProps) {
 
         {/* Media Type Indicator */}
         <div className="absolute top-2 left-2">
-          {currentMedia.type === "video" && (
+          {currentMedia?.type === "video" && (
             <div className="bg-black/70 text-white px-2 py-1 rounded text-xs flex items-center">
               <Play className="h-3 w-3 mr-1" />
               {t("media.video")}

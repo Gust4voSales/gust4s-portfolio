@@ -26,8 +26,7 @@ https://v0.dev/chat/developer-portfolio-design-0uZqTNlwv6Z
 # TODOS
 
 - Mobile adjusts
+
   - General (spacing, sizes)
-- Fill jsons
-- dynamic json for each lang
 
 - Optionally, filter projects by tags

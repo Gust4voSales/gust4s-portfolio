@@ -8,7 +8,7 @@ interface ExpandableTextProps {
   className?: string;
 }
 
-export function ExpandableText({ text, maxLength = 150, className = "" }: ExpandableTextProps) {
+export function ExpandableText({ text, maxLength = 250, className = "" }: ExpandableTextProps) {
   const { t } = useT("translation");
   const [isExpanded, setIsExpanded] = useState(false);
   const shouldTruncate = text.length > maxLength;

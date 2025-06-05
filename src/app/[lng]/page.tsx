@@ -29,10 +29,12 @@ import { ExpandableText } from "@/components/expandable-text";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useT } from "@/app/i18n/client";
 import { PortfolioTitle } from "@/components/portfolio-title";
+import { useParams } from "next/navigation";
 
 interface Project {
   title: string;
   description: string;
+  descriptionEN: string;
   media: {
     type: "image" | "video";
     src: string;
@@ -48,10 +50,12 @@ interface Project {
 
 interface TimelineItem {
   date: string;
+  dateEN: string;
   institution: string;
   type: "job" | "study";
   title: string;
   description: string;
+  descriptionEN: string;
 }
 
 interface NavigationItem {
@@ -64,6 +68,9 @@ export default function Portfolio() {
   const { t } = useT("translation");
   const [activeSection, setActiveSection] = useState("home");
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const params = useParams();
+  const currentLng = params?.lng as string;
+  const currentLanguage = currentLng as "pt-BR" | "en";
 
   const navigationItems: NavigationItem[] = [
     { id: "home", label: t("navigation.home"), icon: Home },
@@ -143,7 +150,13 @@ export default function Portfolio() {
             </ul>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" className="hidden md:flex" asChild>
-                <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
+                <ExternalLinkAnchor
+                  href={
+                    currentLanguage === "pt-BR"
+                      ? portfolioData.personal.links.resume
+                      : portfolioData.personal.links.resumeEN
+                  }
+                >
                   {t("navigation.resume")} <FileText className="ml-2 h-4 w-4" />
                 </ExternalLinkAnchor>
               </Button>
@@ -181,7 +194,7 @@ export default function Portfolio() {
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                   {t("sections.home.greeting")} <span className="text-primary">{portfolioData.personal.name}</span>
                 </h1>
-                <p className="text-md md:text-xl text-justify text-muted-foreground max-w-lg">
+                <p className="text-md md:text-xl text-justify text-muted-foreground">
                   {t("sections.home.description")}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
@@ -192,7 +205,13 @@ export default function Portfolio() {
                     </ExternalLinkAnchor>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
-                    <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
+                    <ExternalLinkAnchor
+                      href={
+                        currentLanguage === "pt-BR"
+                          ? portfolioData.personal.links.resume
+                          : portfolioData.personal.links.resumeEN
+                      }
+                    >
                       {t("buttons.viewResume")}
                       <FileText className="ml-2 h-4 w-4" />
                     </ExternalLinkAnchor>
@@ -293,12 +312,15 @@ export default function Portfolio() {
 
                       <div className="flex items-center mb-4 text-sm text-muted-foreground">
                         <Calendar className="h-4 w-4 mr-2" />
-                        {timelineItem.date}
+                        {currentLanguage === "pt-BR" ? timelineItem.date : timelineItem.dateEN}
                       </div>
 
                       <h3 className="text-xl font-bold mb-1">{timelineItem.institution}</h3>
                       <h4 className="text-primary mb-4">{timelineItem.title}</h4>
-                      <ExpandableText text={timelineItem.description} className="text-muted-foreground" />
+                      <ExpandableText
+                        text={currentLanguage === "pt-BR" ? timelineItem.description : timelineItem.descriptionEN}
+                        className="text-muted-foreground"
+                      />
                     </div>
                   </motion.div>
                 );
@@ -355,17 +377,21 @@ export default function Portfolio() {
                       </CardHeader>
 
                       <CardContent>
-                        <CardDescription className="text-foreground">{project.description}</CardDescription>
+                        <CardDescription className="text-foreground">
+                          {currentLanguage === "pt-BR" ? project.description : project.descriptionEN}
+                        </CardDescription>
                       </CardContent>
 
                       <CardFooter className="flex justify-between mt-auto">
-                        <Button variant="outline" size="sm" asChild>
-                          <ExternalLinkAnchor href={project.links.live}>
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            {t("buttons.viewLive")}
-                          </ExternalLinkAnchor>
-                        </Button>
-                        <Button variant="outline" size="sm" asChild>
+                        {project.links.live && (
+                          <Button variant="outline" size="sm" asChild>
+                            <ExternalLinkAnchor href={project.links.live}>
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              {t("buttons.viewLive")}
+                            </ExternalLinkAnchor>
+                          </Button>
+                        )}
+                        <Button variant="outline" size="sm" asChild className="ml-auto">
                           <ExternalLinkAnchor href={project.links.github}>
                             <Github className="h-4 w-4 mr-2" />
                             {t("buttons.viewCode")}

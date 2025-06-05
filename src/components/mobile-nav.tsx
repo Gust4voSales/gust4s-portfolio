@@ -8,6 +8,7 @@ import { useT } from "@/app/i18n/client";
 import { ExternalLinkAnchor } from "@/components/ui/external-link-anchor";
 import portfolioData from "@/data/portfolio.json";
 import { PortfolioTitle } from "./portfolio-title";
+import { useParams } from "next/navigation";
 
 interface NavigationItem {
   id: string;
@@ -23,6 +24,9 @@ interface MobileNavProps {
 
 export function MobileNav({ activeSection, scrollToSection, navigationItems }: MobileNavProps) {
   const { t } = useT("translation");
+  const params = useParams();
+  const currentLng = params?.lng as string;
+  const currentLanguage = currentLng as "pt-BR" | "en";
 
   const handleNavClick = (sectionId: string) => {
     scrollToSection(sectionId);
@@ -81,7 +85,13 @@ export function MobileNav({ activeSection, scrollToSection, navigationItems }: M
             transition={{ duration: 0.3, delay: 0.5 }}
           >
             <Button className="w-full justify-start gap-3" variant="outline" asChild>
-              <ExternalLinkAnchor href={portfolioData.personal.links.resume}>
+              <ExternalLinkAnchor
+                href={
+                  currentLanguage === "pt-BR"
+                    ? portfolioData.personal.links.resume
+                    : portfolioData.personal.links.resumeEN
+                }
+              >
                 <FileText className="h-5 w-5" />
                 {t("mobile.resume")}
               </ExternalLinkAnchor>
