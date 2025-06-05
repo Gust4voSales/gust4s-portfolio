@@ -197,14 +197,8 @@ export default function Portfolio() {
                 <p className="text-md md:text-xl text-justify text-muted-foreground">
                   {t("sections.home.description")}
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <Button asChild size="lg">
-                    <ExternalLinkAnchor href={`mailto:${portfolioData.personal.links.email}`}>
-                      {t("buttons.contactMe")}
-                      <Mail className="ml-2 h-4 w-4" />
-                    </ExternalLinkAnchor>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
+                <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                  <Button size="lg" asChild variant="default">
                     <ExternalLinkAnchor
                       href={
                         currentLanguage === "pt-BR"
@@ -216,6 +210,29 @@ export default function Portfolio() {
                       <FileText className="ml-2 h-4 w-4" />
                     </ExternalLinkAnchor>
                   </Button>
+                  <div className="flex gap-6">
+                    <ExternalLinkAnchor
+                      href={portfolioData.personal.links.github}
+                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                    >
+                      <span className="sr-only">GitHub</span>
+                      <Github className="h-6 w-6" />
+                    </ExternalLinkAnchor>
+                    <ExternalLinkAnchor
+                      href={portfolioData.personal.links.linkedin}
+                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                    >
+                      <span className="sr-only">LinkedIn</span>
+                      <Linkedin className="h-6 w-6" />
+                    </ExternalLinkAnchor>
+                    <ExternalLinkAnchor
+                      href={`mailto:${portfolioData.personal.links.email}`}
+                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                    >
+                      <span className="sr-only">Email</span>
+                      <Mail className="h-6 w-6" />
+                    </ExternalLinkAnchor>
+                  </div>
                 </div>
               </motion.div>
 
