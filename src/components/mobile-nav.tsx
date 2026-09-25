@@ -1,14 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Menu, FileText } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { useT } from "@/app/i18n/client";
-import { ExternalLinkAnchor } from "@/components/ui/external-link-anchor";
-import portfolioData from "@/data/portfolio.json";
 import { PortfolioTitle } from "./portfolio-title";
-import { useParams } from "next/navigation";
 
 interface NavigationItem {
   id: string;
@@ -24,9 +21,6 @@ interface MobileNavProps {
 
 export function MobileNav({ activeSection, scrollToSection, navigationItems }: MobileNavProps) {
   const { t } = useT("translation");
-  const params = useParams();
-  const currentLng = params?.lng as string;
-  const currentLanguage = currentLng as "pt-BR" | "en";
 
   const handleNavClick = (sectionId: string) => {
     scrollToSection(sectionId);
@@ -74,29 +68,6 @@ export function MobileNav({ activeSection, scrollToSection, navigationItems }: M
               );
             })}
           </nav>
-
-          {/* Divider */}
-          <div className="border-t border-border mt-4" />
-
-          {/* Resume Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
-            <Button className="w-full justify-start gap-3" variant="outline" asChild>
-              <ExternalLinkAnchor
-                href={
-                  currentLanguage === "pt-BR"
-                    ? portfolioData.personal.links.resume
-                    : portfolioData.personal.links.resumeEN
-                }
-              >
-                <FileText className="h-5 w-5" />
-                {t("mobile.resume")}
-              </ExternalLinkAnchor>
-            </Button>
-          </motion.div>
         </div>
       </SheetContent>
     </Sheet>

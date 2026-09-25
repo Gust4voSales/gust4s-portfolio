@@ -6,14 +6,13 @@
   "navigation": {
     "home": "Início",
     "experience": "Experiência",
-    "projects": "Projetos",
-    "resume": "Currículo"
+    "projects": "Projetos"
   },
   "buttons": {
     "contactMe": "Entre em Contato",
-    "viewResume": "Ver Currículo",
     "viewLive": "Acessar",
     "viewCode": "Ver Código",
+    "privateProject": "Projeto privado",
     "backToTop": "Voltar ao topo",
     "readMore": "Ler mais",
     "showLess": "Mostrar menos"
@@ -22,7 +21,7 @@
     "home": {
       "badge": "Desenvolvedor Full Stack",
       "greeting": "Olá, eu sou",
-      "description": "Engenheiro de Software Full Stack com mais de 4 anos de experiência entregando sistemas de alta performance para fintechs. Atuo com excelência em times ágeis e colaborativos, liderando a arquitetura de back-end, otimizando infraestrutura em nuvem, integrando com parceiros externos para gerar impacto estratégico no produto e desenvolvendo front-ends intuitivos que entregam valor real e satisfação ao usuário."
+      "description": "Engenheiro de Software Full Stack com {{years}}+ anos de experiência entregando sistemas de alta performance para fintechs. Atuo com excelência em times ágeis e colaborativos, liderando a arquitetura de back-end, otimizando infraestrutura em nuvem, integrando com parceiros externos para gerar impacto estratégico no produto e desenvolvendo front-ends intuitivos que entregam valor real e satisfação ao usuário."
     },
     "experience": {
       "badge": "Minha Jornada",
@@ -38,8 +37,7 @@
     "video": "Vídeo"
   },
   "mobile": {
-    "openNavigation": "Abrir menu de navegação",
-    "resume": "Currículo"
+    "openNavigation": "Abrir menu de navegação"
   },
   "footer": {
     "copyright": "Todos os direitos reservados."

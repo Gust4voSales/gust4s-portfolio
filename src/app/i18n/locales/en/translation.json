@@ -6,14 +6,13 @@
   "navigation": {
     "home": "Home",
     "experience": "Experience",
-    "projects": "Projects",
-    "resume": "Resume"
+    "projects": "Projects"
   },
   "buttons": {
     "contactMe": "Contact Me",
-    "viewResume": "View Resume",
     "viewLive": "View Live",
     "viewCode": "View Code",
+    "privateProject": "Private project",
     "backToTop": "Back to top",
     "readMore": "Read more",
     "showLess": "Show less"
@@ -22,7 +21,7 @@
     "home": {
       "badge": "Full Stack developer",
       "greeting": "Hi, I'm",
-      "description": "Full Stack Software Engineer with 4+ years of experience delivering high-performance systems for fintechs. I thrive in agile, collaborative teams, leading backend architecture, optimizing cloud infrastructure, integrating with external partners to drive strategic product impact and building intuitive front-ends that drive real value and user satisfaction."
+      "description": "Full Stack Software Engineer with {{years}}+ years of experience delivering high-performance systems for fintechs. I thrive in agile, collaborative teams, leading backend architecture, optimizing cloud infrastructure, integrating with external partners to drive strategic product impact and building intuitive front-ends that drive real value and user satisfaction."
     },
     "experience": {
       "badge": "My Journey",
@@ -38,8 +37,7 @@
     "video": "Video"
   },
   "mobile": {
-    "openNavigation": "Open navigation menu",
-    "resume": "Resume"
+    "openNavigation": "Open navigation menu"
   },
   "footer": {
     "copyright": "All rights reserved."

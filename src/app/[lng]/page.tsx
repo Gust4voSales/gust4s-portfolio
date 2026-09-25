@@ -6,7 +6,6 @@ import {
   ArrowDown,
   Github,
   Mail,
-  FileText,
   Calendar,
   Briefcase,
   GraduationCap,
@@ -15,6 +14,7 @@ import {
   ExternalLink,
   Linkedin,
   ArrowUp,
+  Lock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,6 +45,7 @@ interface Project {
   links: {
     live: string;
     github: string;
+    private?: boolean;
   };
 }
 
@@ -71,6 +72,7 @@ export default function Portfolio() {
   const params = useParams();
   const currentLng = params?.lng as string;
   const currentLanguage = currentLng as "pt-BR" | "en";
+  const yearsOfExperience = new Date().getFullYear() - 2021;
 
   const navigationItems: NavigationItem[] = [
     { id: "home", label: t("navigation.home"), icon: Home },
@@ -149,17 +151,6 @@ export default function Portfolio() {
               ))}
             </ul>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" className="hidden md:flex" asChild>
-                <ExternalLinkAnchor
-                  href={
-                    currentLanguage === "pt-BR"
-                      ? portfolioData.personal.links.resume
-                      : portfolioData.personal.links.resumeEN
-                  }
-                >
-                  {t("navigation.resume")} <FileText className="ml-2 h-4 w-4" />
-                </ExternalLinkAnchor>
-              </Button>
               <LanguageSwitcher />
               <ThemeSwitch />
               <MobileNav
@@ -195,44 +186,30 @@ export default function Portfolio() {
                   {t("sections.home.greeting")} <span className="text-primary">{portfolioData.personal.name}</span>
                 </h1>
                 <p className="text-md md:text-xl text-justify text-muted-foreground">
-                  {t("sections.home.description")}
+                  {t("sections.home.description", { years: yearsOfExperience })}
                 </p>
-                <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
-                  <Button size="lg" asChild variant="default">
-                    <ExternalLinkAnchor
-                      href={
-                        currentLanguage === "pt-BR"
-                          ? portfolioData.personal.links.resume
-                          : portfolioData.personal.links.resumeEN
-                      }
-                    >
-                      {t("buttons.viewResume")}
-                      <FileText className="ml-2 h-4 w-4" />
-                    </ExternalLinkAnchor>
-                  </Button>
-                  <div className="flex gap-6">
-                    <ExternalLinkAnchor
-                      href={portfolioData.personal.links.github}
-                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
-                    >
-                      <span className="sr-only">GitHub</span>
-                      <Github className="h-6 w-6" />
-                    </ExternalLinkAnchor>
-                    <ExternalLinkAnchor
-                      href={portfolioData.personal.links.linkedin}
-                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
-                    >
-                      <span className="sr-only">LinkedIn</span>
-                      <Linkedin className="h-6 w-6" />
-                    </ExternalLinkAnchor>
-                    <ExternalLinkAnchor
-                      href={`mailto:${portfolioData.personal.links.email}`}
-                      className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
-                    >
-                      <span className="sr-only">Email</span>
-                      <Mail className="h-6 w-6" />
-                    </ExternalLinkAnchor>
-                  </div>
+                <div className="flex gap-6 pt-4">
+                  <ExternalLinkAnchor
+                    href={portfolioData.personal.links.github}
+                    className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                  >
+                    <span className="sr-only">GitHub</span>
+                    <Github className="h-6 w-6" />
+                  </ExternalLinkAnchor>
+                  <ExternalLinkAnchor
+                    href={portfolioData.personal.links.linkedin}
+                    className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                  >
+                    <span className="sr-only">LinkedIn</span>
+                    <Linkedin className="h-6 w-6" />
+                  </ExternalLinkAnchor>
+                  <ExternalLinkAnchor
+                    href={`mailto:${portfolioData.personal.links.email}`}
+                    className={`text-muted-foreground hover:text-primary active:text-primary transition-colors`}
+                  >
+                    <span className="sr-only">Email</span>
+                    <Mail className="h-6 w-6" />
+                  </ExternalLinkAnchor>
                 </div>
               </motion.div>
 
@@ -408,12 +385,24 @@ export default function Portfolio() {
                             </ExternalLinkAnchor>
                           </Button>
                         )}
-                        <Button variant="outline" size="sm" asChild className="ml-auto">
-                          <ExternalLinkAnchor href={project.links.github}>
-                            <Github className="h-4 w-4 mr-2" />
-                            {t("buttons.viewCode")}
-                          </ExternalLinkAnchor>
-                        </Button>
+                        {project.links.private ? (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            disabled
+                            className="ml-auto disabled:opacity-100 text-muted-foreground"
+                          >
+                            <Lock className="h-4 w-4 mr-2" />
+                            {t("buttons.privateProject")}
+                          </Button>
+                        ) : (
+                          <Button variant="outline" size="sm" asChild className="ml-auto">
+                            <ExternalLinkAnchor href={project.links.github}>
+                              <Github className="h-4 w-4 mr-2" />
+                              {t("buttons.viewCode")}
+                            </ExternalLinkAnchor>
+                          </Button>
+                        )}
                       </CardFooter>
                     </Card>
                   </motion.div>

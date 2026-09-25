@@ -5,22 +5,29 @@
     "links": {
       "email": "manoel0gustavo@gmail.com",
       "linkedin": "https://www.linkedin.com/in/gust4vo-sales/",
-      "github": "https://github.com/Gust4voSales",
-      "resume": "https://drive.google.com/file/d/12qDFa_m_PqhQcjtk_yNmqMJQQ3Ag5JOv/view?usp=drive_link",
-      "resumeEN": "https://drive.google.com/file/d/1kYhIhitFKXfqL2zCLmltq7H-iF5__xvl/view?usp=drive_link"
+      "github": "https://github.com/Gust4voSales"
     }
   },
   "sections": {
     "experience": {
       "timeline": [
         {
-          "date": "Junho 2024 - Presente",
-          "dateEN": "June 2024 - Present",
+          "date": "Setembro 2025 - Presente",
+          "dateEN": "September 2025 - Present",
+          "institution": "Nomad Global",
+          "type": "job",
+          "title": "Back End Developer",
+          "description": "Desenvolvo soluções de backend na Nomad, uma das maiores fintechs brasileiras de conta global e investimentos no exterior, com mais de 3,5 milhões de usuários. Liderei o MVP do primeiro produto de negociação de criptomoedas, com integrações de on-ramp, Banking as a Service e ledger.",
+          "descriptionEN": "I develop backend solutions at Nomad, one of the largest Brazilian fintechs for global accounts and international investments, serving more than 3.5 million users. I led the MVP of the company's first cryptocurrency trading product, integrating on-ramp providers, Banking as a Service and ledger."
+        },
+        {
+          "date": "Junho 2024 - Setembro 2025",
+          "dateEN": "June 2024 - September 2025",
           "institution": "Liqi Digital Assets",
           "type": "job",
           "title": "Back End Developer",
-          "description": "Desenvolvo soluções para a plataforma Liqi Crypto, que oferece infraestrutura de Crypto as a Service para empresas, incluindo o Itaú, um dos maiores bancos da América Latina. Desenvolvo soluções escaláveis e seguras para rotas operacionais críticas com alto volume de requisições e realizo integrações com exchanges e serviços de terceiros.",
-          "descriptionEN": "I develop solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I develop scalable and secure solutions for critical operational routes with high volume requests and performed integrations with exchanges and third-party services."
+          "description": "Desenvolvi soluções para a plataforma Liqi Crypto, que oferece infraestrutura de Crypto as a Service para empresas, incluindo o Itaú, um dos maiores bancos da América Latina. Desenvolvi soluções escaláveis e seguras para rotas operacionais críticas com alto volume de requisições e realizei integrações com exchanges e serviços de terceiros.",
+          "descriptionEN": "I developed solutions for the Liqi Crypto platform, which provides Crypto as a Service infrastructure for companies, including Itaú, one of the largest banks in Latin America. I developed scalable and secure solutions for critical operational routes with high request volume and integrated with exchanges and third-party services."
         },
         {
           "date": "Abril 2022 - Junho 2024",
@@ -63,6 +70,46 @@
     "projects": {
       "items": [
         {
+          "title": "SolVitrine",
+          "description": "Plataforma para empresas de energia solar simularem instalações em 3D e captarem clientes automaticamente. O cliente monta o projeto no simulador público e deixa o contato para liberar o relatório.",
+          "descriptionEN": "Platform for solar energy companies to simulate installations in 3D and capture clients automatically. The client builds the project in the public simulator and leaves their contact to unlock the full report.",
+          "media": [
+            {
+              "type": "image",
+              "src": "https://sol-vitrine.vercel.app/logo%20-%20png%20larga.png",
+              "title": "Logo SolVitrine"
+            },
+            {
+              "type": "image",
+              "src": "https://sol-vitrine.vercel.app/landing/designer.png",
+              "title": "Designer solar"
+            },
+            {
+              "type": "image",
+              "src": "https://sol-vitrine.vercel.app/landing/dashboard-home.png",
+              "title": "Dashboard"
+            }
+          ],
+          "tags": [
+            "nextjs",
+            "typescript",
+            "prisma",
+            "postgresql",
+            "react-three-fiber",
+            "shadcn",
+            "tailwindcss",
+            "trpc",
+            "zustand",
+            "stripe",
+            "better-auth"
+          ],
+          "links": {
+            "live": "https://sol-vitrine.vercel.app/",
+            "github": "",
+            "private": true
+          }
+        },
+        {
           "title": "Loop Pedal Online",
           "description": "Simulador de loop pedal online com controle intuitivo através de expressões faciais capturadas pela webcam.",
           "descriptionEN": "Online loop pedal simulator with intuitive control through facial expressions captured by webcam.",
@@ -73,7 +120,14 @@
               "title": "Youtube Demo"
             }
           ],
-          "tags": ["react", "typescript", "nextjs", "face-recognition", "face-api", "tailwindcss"],
+          "tags": [
+            "react",
+            "typescript",
+            "nextjs",
+            "face-recognition",
+            "face-api",
+            "tailwindcss"
+          ],
           "links": {
             "live": "https://loop-pedal-online.vercel.app/",
             "github": "https://github.com/Gust4voSales/loop-pedal-online"
@@ -105,7 +159,15 @@
               "title": "Kings League Screenshot 3"
             }
           ],
-          "tags": ["typescript", "mobile", "react-native", "expo", "native-wind", "gluestack-ui", "zustand"],
+          "tags": [
+            "typescript",
+            "mobile",
+            "react-native",
+            "expo",
+            "native-wind",
+            "gluestack-ui",
+            "zustand"
+          ],
           "links": {
             "live": "https://play.google.com/store/apps/details?id=com.gust4.kingsleagueamadora",
             "github": "https://github.com/Gust4voSales/kings-league-app"
@@ -186,7 +248,14 @@
               "title": "RecomendaFilmes screenshot 2"
             }
           ],
-          "tags": ["react", "typescript", "movies", "series", "recommendation", "tmdb-api"],
+          "tags": [
+            "react",
+            "typescript",
+            "movies",
+            "series",
+            "recommendation",
+            "tmdb-api"
+          ],
           "links": {
             "live": "https://recomenda-filmes.vercel.app/",
             "github": "https://github.com/Gust4voSales/RecomendaFilmes"
@@ -203,7 +272,13 @@
               "title": "Youtube Demo"
             }
           ],
-          "tags": ["nextjs", "typescript", "video-editing", "ffmpeg", "styled-components"],
+          "tags": [
+            "nextjs",
+            "typescript",
+            "video-editing",
+            "ffmpeg",
+            "styled-components"
+          ],
           "links": {
             "live": "https://clip-maker.vercel.app/",
             "github": "https://github.com/Gust4voSales/ClipMaker"
@@ -258,7 +333,14 @@
               "title": "Lockdown Platformer Screenshot 3"
             }
           ],
-          "tags": ["unity", "c#", "game", "platformer", "pixel-art", "covid-19"],
+          "tags": [
+            "unity",
+            "c#",
+            "game",
+            "platformer",
+            "pixel-art",
+            "covid-19"
+          ],
           "links": {
             "live": "https://gust4vosales.itch.io/lockdown-platformer",
             "github": "https://github.com/Gust4voSales/LockdownPlatformer-UNITY"
@@ -275,7 +357,15 @@
               "title": "Youtube Demo"
             }
           ],
-          "tags": ["python", "voice-recognition", "automation", "assistant", "pyttsx3", "pyaudio", "bot"],
+          "tags": [
+            "python",
+            "voice-recognition",
+            "automation",
+            "assistant",
+            "pyttsx3",
+            "pyaudio",
+            "bot"
+          ],
           "links": {
             "live": "",
             "github": "https://github.com/Gust4voSales/Marvin-VirtualAssistent"
@@ -307,7 +397,12 @@
               "title": "TIMES - Screenshot 3"
             }
           ],
-          "tags": ["react-native", "productivity", "focus", "mobile"],
+          "tags": [
+            "react-native",
+            "productivity",
+            "focus",
+            "mobile"
+          ],
           "links": {
             "live": "",
             "github": "https://github.com/Gust4voSales/TIMES-Gerenciador-de-Foco"
@@ -324,7 +419,13 @@
               "title": "Youtube Tutorial"
             }
           ],
-          "tags": ["python", "automation", "pyautogui", "opencv", "bot"],
+          "tags": [
+            "python",
+            "automation",
+            "pyautogui",
+            "opencv",
+            "bot"
+          ],
           "links": {
             "live": "",
             "github": "https://github.com/Gust4voSales/LeagueOfLegends-Bot-de-Fila"
@@ -346,7 +447,12 @@
               "title": "SpellsTimer Screenshot 1"
             }
           ],
-          "tags": ["electron", "javascript", "league-of-legends", "desktop"],
+          "tags": [
+            "electron",
+            "javascript",
+            "league-of-legends",
+            "desktop"
+          ],
           "links": {
             "live": "",
             "github": "https://github.com/Gust4voSales/SpellsTimer"
